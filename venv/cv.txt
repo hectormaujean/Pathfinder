@@ -1,38 +1,166 @@
-Myrvete HATOUM
-Apprentie ingénieure en Systèmes d'Information chez InfoPro Digital
-myrvete.hatoum@gmail.com
+Matteo Sammarco
 
-Summary
+Data Scientist
 
-N/A
+Issy-les-Moulineaux (92) - Email me on Indeed: indeed.com/r/Matteo-Sammarco/93bdbb4682ad23a5
 
-Experience
-Développeuse web at Infopro digital
-septembre 2015  -  Present
+EXPÉRIENCE
 
-Développeuse Java at Infopro digital
-avril 2015  -  juin 2015 (3 mois)
+Data Scientist
 
-Education
-ECE Paris
-Diplôme d'ingénieur en Systèmes d'Information, 2015 - 2018
-Dublin Business School
-Séminaire de business de trois semaines en partenariat avec l'ECE Paris, 2017 - 2017
-Universidad Europea
-Programme universitaire de trois mois en partenariat avec l'ECE Paris, 2016 - 2016
-Université Paris 13
-DUT Informatique, 2013 - 2015
-Université Paris Diderot
-PACES , 2012 - 2013
+Axa Data Innovation Lab  -  Suresnes (92) -
 
-Page 1
+octobre 2015 - actuellement
 
-Myrvete HATOUM
-Apprentie ingénieure en Systèmes d'Information chez InfoPro Digital
-myrvete.hatoum@gmail.com
+- Data Science (Machine Learning, Deep Learning), 
+- Insurance products, 
+- Connected Car, 
+- IoT, 
+- Mobile App (iOS and Android).
 
-Contact Myrvete on LinkedIn
+INGENIEUR R&D
 
-Page 2
+Université Pierre et Marie Curie  -  Paris (75) -
+
+mai 2011 - actuellement
+
+Paris, France.
+Data Scientist
+{ Analyse statistique et corrélation de données. Analyse de traces Wi-Fi pour la dé- tection de comportements
+malveillants, les activités des utilisateurs et la mesure des
+performances du réseau.
+{ Collecte et analyse des messages sur les réseaux sociaux (Twitter, Facebook et Sina
+Weibo) et corrélation avec les niveaux de pollution de l'air dans le monde. Classification des messages avec
+apprentissage automatique. Visualisation sur cartes géographiques.
+{ Modélisation, analyse et visualisation de traces de mobilité.
+{ Outils utilisés: R, Python avec Pandas, NetworkX et Matplotlib, scripting Bash, Awk,
+Sed, Gnuplot, MongoDB, QGIS, Drake, Hadoop, Machine Learning.
+Android et plateformes mobiles
+{ Implémentation d'applications Android pour réseaux ad-hoc (dont transferts de fichiers
+volumineux).
+- Implémentation de protocoles réseaux distribués.
+- Exploitation des communications IPv4, IPv6, Unicast, Broadcast, Multicast, Wi-Fi
+Direct, Bluetooth 3.0 sur Android (SDK, NDK).
+-  Implémentation  de:  (i)  PePiT  (mobile  data  offloading  app,  démo  presentée  dans  une  conférence
+internationale), (ii) NTP Simple (synchronisation de l'horloge Android avec un serveur NTP), (iii) Cron Simple
+(ordonnanceur de tâches), (iv) apps
+personnelles publiées sur le Google Play Store et le Windows Phone Store
+{ Responsable du développement et de la collaboration avec différents partenaires.
+Réseaux et sécurité
+{ Capture, traitement et analyse de traces Wi-Fi pour la détection de comportements
+malveillants et la mesure des performances réseaux.
+
+{ Passage à l'échelle des systèmes de surveillance de réseau local sans fil avec deux
+approches originales: (i) Sélection de traces basée sur leur similarité et sur des algorithmes de détection de
+communautés de graphes, (ii) Mesures collaboratives avec
+détection de comportements malveillants.
+Véhicules connectés, systèmes de transport intelligents et réseaux véhiculaires
+{ Développement d'une application Android pour la détection de places libres de parking avec Open Computer
+Vision.
+{ Integration de données de la pollution de l'air dans les systèmes de transport intelligents.
+
+INGENIEUR R&D, LINCS
+
+Laboratory of Information, Networking and Communication Sciences  -  Paris (75) -
+
+octobre 2010 - août 2014
+
+France. Le LINCS (Laboratory of Information, Networking and Communication Sciences) est un laboratoire
+commun d'informatique entre l'Inria, Alcatel-Lucent, SystemX, l'UPMC et
+l'Institut Télécom (http://www.lincs.fr/about-us/).
+{ Implémentation d'un système multi-agents en Java basé sur le modèle de mobilité SIMPS
+("SIMPS: using sociology for personal mobility", V. Borrel, F. Legendre, M. Dias de
+Amorim, S. Fdida, in IEEE/ACM Transactions on Networking).
+
+CONSULTANT FREELANCE
+
+GTI Voyages  -  Paris (75) -
+
+août 2013 - août 2013
+
+Paris, France.
+Algorithmes  de  pricing  dans  le  secteur  secteur  de  l'hôtellerie.  Diagnostic  et  mise  à  jour  des  systèmes
+d'information de l'entreprise.
+
+INGENIEUR R&D
+
+Télécom ParisTech  -  Paris (75) -
+
+avril 2010 - avril 2011
+
+Paris, France. Mise en place, gestion et réalisation d'expériences d'émulation réseau afin d'étudier
+l'interaction entre les niveaux 7 et 3 de la pile OSI avec applications P2P-TV; analyse des résultats; gestion
+d'une grille de sept serveurs Linux.
+
+{ FP7 Moto http://www.fp7-moto.eu/
+Partenaires: Centro Ricerche FIAT, Thales, Innovalia, CNR, Intecs, Fon, UPMC.
+
+{ ANR Crowd http://anr-crowd.lip6.fr/
+Partenaires: Thales, UPMC, 20Minutes.
+
+{ ANR Rescue http://rescue.lille.inria.fr/
+Partenaires: Inria, UPMC, Laboratoire d'Analyse et d'Architecture des Systèmes, France Telecom,
+École Normale Supérieure de Lyon.
+
+{ FP7 NapaWine http://www.napa-wine.eu/cgi-bin/twiki/view/Public
+Partenaires: France Telecom, Politecnico di Torino, Università di Trento, Budapest University of
+Technology and Economics, Télécom ParisTech, LightComm, Magyar Telekom, Nec, NETvisor,
+Telekomunikacja Polska, Warsaw University of Technology.
+
+FORMATION
+
+Doctorat en en Informatique
+
+UPMC Sorbonne  -  Paris (75)
+
+2014
+
+Master en Informatique
+
+Università degli Studi di Napoli Federico II  -  Napoli, Campania
+
+2010
+
+LIENS
+
+https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile
+
+INFORMATIONS COMPLÉMENTAIRES
+
+Compétences informatiques
+Développement Java, Bash, Sed, Awk, Python, C++, XML. Petits projets avec Perl, C#, VHDL,
+Prolog, JavaScript, Assembly (Motorola 68000)
+Data Science R, Python avec Pandas NetworkX et Matplotlib, Drake, scripting, machine learning,
+Hadoop
+Théorie des Algorithmes sur les graphes, Python NetworkX
+graphes
+OS Linux (Debian-like), Android, Microsoft Windows, Microsoft Windows Phone
+BD MySQL, SQlite, MongoDB
+Réseaux TCP/IP, Pile ISO OSI, IEEE 802.11, DTN, NDN, ICN, V2X
+Logiciels RStudio, KNIME (apprentissage automatique et data mining), Wireshark, Wipal,
+Wscout (Wi-Fi sniffer, trace analyzer), ModelNet-TE (émulation réseaux), Eclipse,
+A
+Emacs, LTEX, R (calcul scientifique ), {Microsoft, Open, Libre}Office, Gnuplot,
+SVN, GIT, GraphViz, VirtualBox, Visual Studio
+Applications publiées
+Google Play Code Civil et Pénal, Si Gonfia La Rete, Emacs Quick Reference, Code de la Route,
+Code de la consommation
+Windows Si Gonfia La Rete
+Phone Store
+Simulateur SIMPS, simulateur de mobilité des piétons
+
+Systèmes d'information 30/30
+Réseaux informatiques II 30/30
+Génie logiciel II 30/30
+
+Algorithmes 30/30
+
+2008 Licence en Ingénierie Informatique, Università degli Studi di Napoli Federico II,
+Naples, Italie.
+Mémoire: "A system to filter image-based spam emails".
+2008 Cisco Certification CCNA1.
+Evaluation: […]
+2004 Diplôme baccalauréat scientifique, Naples, Italie.
+Mention très bien […]
 
 

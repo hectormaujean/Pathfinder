@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
@@ -31,9 +34,9 @@ def convert(path):
     retstr.close()
     return text
 
+#Convert to txt file
+txt = convert('pdfminer/samples/cv3.pdf')
 
-txt = convert('pdfminer/samples/cv.pdf')
-print(txt)
 file = open("cv.txt", "w")
 file.write(txt)
 
@@ -43,13 +46,11 @@ file.close()
 file = open('cv.txt', 'r')
 
 # on effectue la recherche dans le fichier
-codes = re.findall('Experience(?s)(.*)Education', file.read())
+codes = re.findall('FORMATION(?s)(.*)[^a-zA-Z]COMPÉTENCES', file.read())
 splitline = ""
 
 for block in codes:
-    print(block)
     splitline = block.split("\n")
-    print("**")
     print(splitline)
 
 splitline2 = []
@@ -65,6 +66,14 @@ for case in splitline:
 print(splitline)
 print("-----**----")
 print(splitline2)
+
+#REGEX FORMATION
+#diplome: .*(?=en)
+#domaine: (?<=en).*
+#école: .*(?= - )
+#lieu: (?= - ).*
+
+#école et lieu à séparer des dates (contrôle sur les chiffres ?)
 
 print("\n")
 for line in splitline2:
@@ -84,6 +93,7 @@ for line in splitline2:
     if duree:
         print(duree)
 
+#Write to CSV file
 workbook = xlsxwriter.Workbook('cv.xlsx')
 worksheet = workbook.add_worksheet()
 data = open('cv.txt', 'r')
