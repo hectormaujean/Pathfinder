@@ -1,166 +1,75 @@
-Matteo Sammarco
+Nicolas Buissart
 
-Data Scientist
-
-Issy-les-Moulineaux (92) - Email me on Indeed: indeed.com/r/Matteo-Sammarco/93bdbb4682ad23a5
+Beauchamp (95) - Email me on Indeed: indeed.com/r/Nicolas-Buissart/abab6e2e9d3337e8
 
 EXPÉRIENCE
 
-Data Scientist
+Data Scientist ( Stage )
 
-Axa Data Innovation Lab  -  Suresnes (92) -
+Société Générale  -  Hauts-de-Seine -
 
-octobre 2015 - actuellement
+juin 2017 - novembre 2017
 
-- Data Science (Machine Learning, Deep Learning), 
-- Insurance products, 
-- Connected Car, 
-- IoT, 
-- Mobile App (iOS and Android).
+Au cours de ce stage j’ai travaillé sur la réconciliation automatique de la comptabilité économique et de gestion.
+Mise en place de deux modèles de détection d’écart,un basé sur un système de scoring de la rareté des
+écarts, le deuxième détecte les écarts récurrents. J’ai pu travailler sur des modèles tel que: RandomForest,
+GradientBoost  Regression  et  Logistic  Regression.  Langages  utilisés:  Python(les  modules  Scikit-Learn  et
+Pandas) Logiciel: Tableau pour valider les modèles et mise en place de KPI
 
-INGENIEUR R&D
+Stagiaire
 
-Université Pierre et Marie Curie  -  Paris (75) -
+Humbrain  -  Paris (75) -
 
-mai 2011 - actuellement
+mai 2016 - septembre 2016
 
-Paris, France.
-Data Scientist
-{ Analyse statistique et corrélation de données. Analyse de traces Wi-Fi pour la dé- tection de comportements
-malveillants, les activités des utilisateurs et la mesure des
-performances du réseau.
-{ Collecte et analyse des messages sur les réseaux sociaux (Twitter, Facebook et Sina
-Weibo) et corrélation avec les niveaux de pollution de l'air dans le monde. Classification des messages avec
-apprentissage automatique. Visualisation sur cartes géographiques.
-{ Modélisation, analyse et visualisation de traces de mobilité.
-{ Outils utilisés: R, Python avec Pandas, NetworkX et Matplotlib, scripting Bash, Awk,
-Sed, Gnuplot, MongoDB, QGIS, Drake, Hadoop, Machine Learning.
-Android et plateformes mobiles
-{ Implémentation d'applications Android pour réseaux ad-hoc (dont transferts de fichiers
-volumineux).
-- Implémentation de protocoles réseaux distribués.
-- Exploitation des communications IPv4, IPv6, Unicast, Broadcast, Multicast, Wi-Fi
-Direct, Bluetooth 3.0 sur Android (SDK, NDK).
--  Implémentation  de:  (i)  PePiT  (mobile  data  offloading  app,  démo  presentée  dans  une  conférence
-internationale), (ii) NTP Simple (synchronisation de l'horloge Android avec un serveur NTP), (iii) Cron Simple
-(ordonnanceur de tâches), (iv) apps
-personnelles publiées sur le Google Play Store et le Windows Phone Store
-{ Responsable du développement et de la collaboration avec différents partenaires.
-Réseaux et sécurité
-{ Capture, traitement et analyse de traces Wi-Fi pour la détection de comportements
-malveillants et la mesure des performances réseaux.
+Stagiaire Humbrain
+Humbrain est une entreprise réalisant des prestations comme la mise en place de services au sein d'entreprise
+J'ai réalise les missions suivantes
+Mail auprès de l'entreprise Humbrain:
+buissartni@ • Création et Mise à jour du site Web de la société.
+eisti.eu • Mise en place de trois indicateurs sur les différents services fourni par l'entreprise afin de savoir l'état
+de ces-derniers.
+• Mise en place d'un tableau de bord.
+Programmation • Participation aux réunions avec les clients.
+• Réflexion autour de l'amélioration de certains algorithmes.
 
-{ Passage à l'échelle des systèmes de surveillance de réseau local sans fil avec deux
-approches originales: (i) Sélection de traces basée sur leur similarité et sur des algorithmes de détection de
-communautés de graphes, (ii) Mesures collaboratives avec
-détection de comportements malveillants.
-Véhicules connectés, systèmes de transport intelligents et réseaux véhiculaires
-{ Développement d'une application Android pour la détection de places libres de parking avec Open Computer
-Vision.
-{ Integration de données de la pollution de l'air dans les systèmes de transport intelligents.
+Gérant
 
-INGENIEUR R&D, LINCS
+Youtube -
 
-Laboratory of Information, Networking and Communication Sciences  -  Paris (75) -
+mai 2011 - septembre 2013
 
-octobre 2010 - août 2014
-
-France. Le LINCS (Laboratory of Information, Networking and Communication Sciences) est un laboratoire
-commun d'informatique entre l'Inria, Alcatel-Lucent, SystemX, l'UPMC et
-l'Institut Télécom (http://www.lincs.fr/about-us/).
-{ Implémentation d'un système multi-agents en Java basé sur le modèle de mobilité SIMPS
-("SIMPS: using sociology for personal mobility", V. Borrel, F. Legendre, M. Dias de
-Amorim, S. Fdida, in IEEE/ACM Transactions on Networking).
-
-CONSULTANT FREELANCE
-
-GTI Voyages  -  Paris (75) -
-
-août 2013 - août 2013
-
-Paris, France.
-Algorithmes  de  pricing  dans  le  secteur  secteur  de  l'hôtellerie.  Diagnostic  et  mise  à  jour  des  systèmes
-d'information de l'entreprise.
-
-INGENIEUR R&D
-
-Télécom ParisTech  -  Paris (75) -
-
-avril 2010 - avril 2011
-
-Paris, France. Mise en place, gestion et réalisation d'expériences d'émulation réseau afin d'étudier
-l'interaction entre les niveaux 7 et 3 de la pile OSI avec applications P2P-TV; analyse des résultats; gestion
-d'une grille de sept serveurs Linux.
-
-{ FP7 Moto http://www.fp7-moto.eu/
-Partenaires: Centro Ricerche FIAT, Thales, Innovalia, CNR, Intecs, Fon, UPMC.
-
-{ ANR Crowd http://anr-crowd.lip6.fr/
-Partenaires: Thales, UPMC, 20Minutes.
-
-{ ANR Rescue http://rescue.lille.inria.fr/
-Partenaires: Inria, UPMC, Laboratoire d'Analyse et d'Architecture des Systèmes, France Telecom,
-École Normale Supérieure de Lyon.
-
-{ FP7 NapaWine http://www.napa-wine.eu/cgi-bin/twiki/view/Public
-Partenaires: France Telecom, Politecnico di Torino, Università di Trento, Budapest University of
-Technology and Economics, Télécom ParisTech, LightComm, Magyar Telekom, Nec, NETvisor,
-Telekomunikacja Polska, Warsaw University of Technology.
+J'ai été gérant d'une chaine YouTube pendant deux ans j'ai totalisé plus de deux millions de vues pendant
+cette période. Cela m'a appris à être sérieux et ordonné dans mon travail.
 
 FORMATION
 
-Doctorat en en Informatique
+Diplôme d'ingénieur en voix
 
-UPMC Sorbonne  -  Paris (75)
+Ecole internationale des Sciences du Traitement de l'Information  -  Cergy (95)
 
-2014
+2012 - 2017
 
-Master en Informatique
+COMPÉTENCE
 
-Università degli Studi di Napoli Federico II  -  Napoli, Campania
-
-2010
-
-LIENS
-
-https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile
+Scala, Python, R, SQL, Spark, Anglais TOEIC 870
 
 INFORMATIONS COMPLÉMENTAIRES
 
-Compétences informatiques
-Développement Java, Bash, Sed, Awk, Python, C++, XML. Petits projets avec Perl, C#, VHDL,
-Prolog, JavaScript, Assembly (Motorola 68000)
-Data Science R, Python avec Pandas NetworkX et Matplotlib, Drake, scripting, machine learning,
-Hadoop
-Théorie des Algorithmes sur les graphes, Python NetworkX
-graphes
-OS Linux (Debian-like), Android, Microsoft Windows, Microsoft Windows Phone
-BD MySQL, SQlite, MongoDB
-Réseaux TCP/IP, Pile ISO OSI, IEEE 802.11, DTN, NDN, ICN, V2X
-Logiciels RStudio, KNIME (apprentissage automatique et data mining), Wireshark, Wipal,
-Wscout (Wi-Fi sniffer, trace analyzer), ModelNet-TE (émulation réseaux), Eclipse,
-A
-Emacs, LTEX, R (calcul scientifique ), {Microsoft, Open, Libre}Office, Gnuplot,
-SVN, GIT, GraphViz, VirtualBox, Visual Studio
-Applications publiées
-Google Play Code Civil et Pénal, Si Gonfia La Rete, Emacs Quick Reference, Code de la Route,
-Code de la consommation
-Windows Si Gonfia La Rete
-Phone Store
-Simulateur SIMPS, simulateur de mobilité des piétons
-
-Systèmes d'information 30/30
-Réseaux informatiques II 30/30
-Génie logiciel II 30/30
-
-Algorithmes 30/30
-
-2008 Licence en Ingénierie Informatique, Università degli Studi di Napoli Federico II,
-Naples, Italie.
-Mémoire: "A system to filter image-based spam emails".
-2008 Cisco Certification CCNA1.
-Evaluation: […]
-2004 Diplôme baccalauréat scientifique, Naples, Italie.
-Mention très bien […]
+Compétences l'aide d'un Random Forest.
+• Analyse des Tweets avec Tweepy - python: Similarité entre les
+retweets en rapport avec Obama et Trump ( utilisation de la libraire pan-
+das).
+• Projet de Text-Mining sur les différents programmes présidentiels de
+2017: Machine learning sur les programmes présidentiels, apprentis-
+sage sur les programmes de 2012 afin de prédire le bord politique d'un
+programme quelconque de 2017.
+• Analyse de série temporelle.
+• Projet Spark sur un système de recommendation.
+En plus de ma formation je suis des cours sur Data Camp:
+• Text Mining: Bag of Words
+• Manipulating DataFrames with pandas
+• Python Data Science Toolbox
+• Financial Trading in R.
 
 

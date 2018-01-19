@@ -1,6 +1,4 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
+# coding: utf8
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
@@ -21,10 +19,9 @@ def convert(path):
     password = ""
     maxpages = 0
     caching = True
-    pagenos = set()
+    pagenos=set()
 
-    for page in PDFPage.get_pages(fp, pagenos, maxpages=maxpages, password=password, caching=caching,
-                                  check_extractable=True):
+    for page in PDFPage.get_pages(fp, pagenos, maxpages=maxpages, password=password,caching=caching, check_extractable=True):
         interpreter.process_page(page)
 
     text = retstr.getvalue()
@@ -34,81 +31,52 @@ def convert(path):
     retstr.close()
     return text
 
-#Convert to txt file
-txt = convert('pdfminer/samples/cv3.pdf')
-
+txt = convert('pdfminer/samples/Nicolas-Buissart.pdf')
+#print(txt)
 file = open("cv.txt", "w")
 file.write(txt)
 
 file.close()
 
-# Reouverture du fichier pour la recherche
-file = open('cv.txt', 'r')
+#Reouverture du fichier pour la recherche
+file=open('cv.txt','r')
 
-# on effectue la recherche dans le fichier
-codes = re.findall('FORMATION(?s)(.*)[^a-zA-Z]COMPÉTENCES', file.read())
+# on effectue la recherche du block
+experience = re.findall('EXPÉRIENCE(?s)(.*)[^a-zA-Z]FORMATION', file.read())
+print(experience)
+
 splitline = ""
-
-for block in codes:
-    splitline = block.split("\n")
-    print(splitline)
-
 splitline2 = []
-i = 0;
-# suppression des cases vides
+
+#suppression des cases vides
 for case in splitline:
     if case != '':
-        print("case non vide")
         splitline2.append(case)
-    else:
-        print("case vide")
 
-print(splitline)
-print("-----**----")
-print(splitline2)
-
-#REGEX FORMATION
-#diplome: .*(?=en)
-#domaine: (?<=en).*
-#école: .*(?= - )
-#lieu: (?= - ).*
-
-#école et lieu à séparer des dates (contrôle sur les chiffres ?)
-
-print("\n")
+postes = []
 for line in splitline2:
     poste = re.findall('.+?(?=at )', line)
-    if poste:
-        print(poste)
+    print(poste)
+    postes.append(poste)
 
-    entreprise = re.findall('(?<= at ).*', line)
-    if entreprise:
-        print(entreprise)
+for element in postes:
+    print(element)
 
-    annee = re.findall(' .*(?= - )', line)
-    if annee:
-        print(annee)
-
-    duree = re.findall('(?<= - ).*', line)
-    if duree:
-        print(duree)
-
-#Write to CSV file
 workbook = xlsxwriter.Workbook('cv.xlsx')
 worksheet = workbook.add_worksheet()
-data = open('cv.txt', 'r')
+data = open('cv.txt','r')
 
-# count lines
+#count lines
 linelist = data.readlines()
 count = len(linelist)
-print count  # check lines
+print count          #check lines
 
-# make each line and print in excel
-for n in range(0, count):
+#make each line and print in excel
+for n in range (0, count):
     line = linelist[n]
     line = line.decode('utf8')
     splitline = line.split("\n")
-    worksheet.write_row(n, 0, splitline)
+    worksheet.write_row(0, n, splitline)
     n += 1
 
 workbook.close()

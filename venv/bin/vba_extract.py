@@ -1,4 +1,4 @@
-#!/Users/Hector/PycharmProjects/Pathfinder/venv/bin/python
+#!/Users/myrvete/PycharmProjects/Pathfinder-master /venv/bin/python
 
 ##############################################################################
 #
