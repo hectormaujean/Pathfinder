@@ -7,6 +7,9 @@ from cStringIO import StringIO
 import xlsxwriter
 import re
 from genderize import Genderize
+import enchant
+from enchant.checker import SpellChecker
+from googletrans import Translator
 
 def convert(path):
     rsrcmgr = PDFResourceManager()
@@ -44,7 +47,7 @@ file.close()
 file=open('cv.txt','r')
 
 
-#fonction qui permet de connaitre le sexe
+######fonction qui permet de connaitre le sexe
 def gender():
     #On defini le prenom via une RegEx qui prend le premier mot du CV
     defPrenom = re.findall('\A[a-zA-Z{Ë, Ï, Ö, Œ, ï, ö, é,œ,â, ë}]+ ',txt)
@@ -78,6 +81,49 @@ for line in splitline2:
 
 for element in postes:
     print(element)
+
+#teste avec une liste de mot en anglais et francais en attendant les RegEx
+#liste_poste correspond à postes
+liste_poste=[['engineeer'], ['matheatics'], ['caissiere']]
+
+
+######fonction qui corrige les fautes en francais
+def correctFR(text):
+ my_dict = enchant.DictWithPWL("fr_FR", 'liste_orthographe.txt')
+ chkr = enchant.checker.SpellChecker(my_dict)
+ b = chkr.set_text(text)
+ for err in chkr:
+    # print ('erreur:', err.word)
+     if not (err.suggest(b) == [] ):
+         sug = err.suggest()[0]
+   #      print ('suggestion:', sug)
+         err.replace(sug)
+ c = chkr.get_text()  # retourne le texte corrige
+ return c
+
+
+######fonction qui traduit les CVen francais et qui corrige. Il faut distinguer CV FR et CV EN
+correct_postes=[]
+for element in liste_poste:
+    # transforme la liste en string et corrige
+    listToStr=','.join(element)
+    print("affiche le poste d'origine:" , listToStr)
+    # on utilise le module translator
+    translator = Translator()
+    # on traduit en francais
+    engToFr = translator.translate(listToStr, dest='fr')
+    engToFr = engToFr.text
+    print("translation", engToFr)
+    #puis on corrige
+    correct_poste = correctFR(engToFr)
+    print("correct",correct_poste)
+#transforme string en liste pour les dictionnaires
+    correct_poste = correct_poste.split('\n')
+    correct_postes.append(correct_poste)
+
+print("resultat final: poste sans faute:",correct_postes)
+
+
 
 
 
