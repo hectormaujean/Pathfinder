@@ -31,7 +31,7 @@ def convert(path):
     retstr.close()
     return text
 
-txt = convert('../pdfminer/samples/Nicolas-Buissart.pdf')
+txt = convert('pdfminer/samples/Nicolas-Buissart.pdf')
 #print(txt)
 file = open("cv.txt", "w")
 file.write(txt)
