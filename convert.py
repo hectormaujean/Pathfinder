@@ -13,6 +13,7 @@ import enchant
 from enchant.checker import SpellChecker
 from googletrans import Translator
 
+# Convertit un fichier pdf en txt
 def convert(path):
     rsrcmgr = PDFResourceManager()
     retstr = StringIO()
@@ -36,10 +37,39 @@ def convert(path):
     retstr.close()
     return text
 
+splitline2 = []
+
+# Trouve le bloc (EXPÉRIENCE, FORMATION, COMPÉTENCES...)
+def findBlock(regex, textFile):
+    block = re.findall(regex, textFile.read())
+    return block
+
+# Split le bloc par ligne
+def splitLine(block):
+    splitline = ""
+    for data in block:
+        splitline = data.split("\n")
+    return splitline
+
+# Supprimme les cases vides
+def cleanSplitLine(splitLine):
+    for case in splitLine:
+        if case != '':
+            splitline2.append(case)
+    return splitline2
+
+# Trouve un element dans une ligne
+def findElement(regex, splitList, tab):
+    for line in splitList:
+        element = re.findall(regex, line)
+        tab.append(element)
+    return tab
+
+
 txt = convert('pdfminer/samples/Nicolas-Buissart.pdf')
 # met en miniscule
-txt = txt.lower()
-print(txt)
+#txt = txt.lower()
+#print(txt)
 file = open("cv.txt", "w")
 file.write(txt)
 
@@ -48,6 +78,26 @@ file.close()
 #Reouverture du fichier pour la recherche
 file=open('cv.txt','r')
 
+# Bloc EXPÉRIENCE
+postesList = []
+
+print('experience')
+
+experience = findBlock('EXPÉRIENCE(?s)(.*)[^a-zA-Z]FORMATION', file)
+splitExperience1 = splitLine(experience)
+splitExperience2 = cleanSplitLine(splitExperience1)
+postes = findElement('', splitExperience2, postesList)
+
+# Bloc FORMATION
+formationsList = []
+
+print('formation')
+
+formation = findBlock('FORMATION(?s)(.*)[^a-zA-Z]COMPÉTENCE', file)
+splitFormation1 = splitLine(formation)
+splitFormation2 = cleanSplitLine(splitFormation1)
+#mettre la regex qui recupere l'element formation
+formations = findElement('', splitFormation2, formationsList)
 
 ######fonction qui permet de connaitre le sexe
 def gender():
@@ -64,25 +114,25 @@ print("gender", gender())
 
 
 # on effectue la recherche du block
-experience = re.findall('expÉrience(?s)(.*)[^a-zA-Z]formation', file.read())
-print(experience)
+#experience = findBlock('expÉrience(?s)(.*)[^a-zA-Z]formation', file)
+#print("exp", experience)
 
-splitline = ""
-splitline2 = []
+#splitline = ""
+#splitline2 = []
 
 #suppression des cases vides
-for case in splitline:
-    if case != '':
-        splitline2.append(case)
+#for case in splitline:
+#    if case != '':
+#        splitline2.append(case)
 
-postes = []
-for line in splitline2:
-    poste = re.findall('.+?(?=at )', line)
-    print(poste)
-    postes.append(poste)
+#postes = []
+#for line in splitline2:
+#    poste = re.findall('.+?(?=at )', line)
+#    print(poste)
+#    postes.append(poste)
 
-for element in postes:
-    print(element)
+#for element in postes:
+#    print(element)
 
 #teste avec une liste de mot en anglais et francais en attendant les RegEx
 #liste_poste correspond à postes
@@ -124,9 +174,6 @@ for element in liste_poste:
     correct_postes.append(correct_poste)
 
 print("resultat final: poste sans faute:",correct_postes)
-
-
-
 
 
 workbook = xlsxwriter.Workbook('cv.xlsx')
