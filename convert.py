@@ -6,7 +6,7 @@ from pdfminer.pdfpage import PDFPage
 from cStringIO import StringIO
 import xlsxwriter
 import re
-
+from genderize import Genderize
 
 def convert(path):
     rsrcmgr = PDFResourceManager()
@@ -32,7 +32,9 @@ def convert(path):
     return text
 
 txt = convert('pdfminer/samples/Nicolas-Buissart.pdf')
-#print(txt)
+# met en miniscule
+txt = txt.lower()
+print(txt)
 file = open("cv.txt", "w")
 file.write(txt)
 
@@ -41,8 +43,23 @@ file.close()
 #Reouverture du fichier pour la recherche
 file=open('cv.txt','r')
 
+
+#fonction qui permet de connaitre le sexe
+def gender():
+    #On defini le prenom via une RegEx qui prend le premier mot du CV
+    defPrenom = re.findall('\A[a-zA-Z{Ë, Ï, Ö, Œ, ï, ö, é,œ,â, ë}]+ ',txt)
+    #On supprime l'espace
+    for suppEsp in defPrenom:
+        prenom = suppEsp.strip()
+    #on defini le sexe a partir du prenom
+    sexe = Genderize().get1(prenom)
+    return sexe['gender']
+
+print("gender", gender())
+
+
 # on effectue la recherche du block
-experience = re.findall('EXPÉRIENCE(?s)(.*)[^a-zA-Z]FORMATION', file.read())
+experience = re.findall('expÉrience(?s)(.*)[^a-zA-Z]formation', file.read())
 print(experience)
 
 splitline = ""
@@ -61,6 +78,8 @@ for line in splitline2:
 
 for element in postes:
     print(element)
+
+
 
 workbook = xlsxwriter.Workbook('cv.xlsx')
 worksheet = workbook.add_worksheet()
