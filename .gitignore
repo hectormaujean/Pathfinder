@@ -44,6 +44,8 @@ crashlytics-build.properties
 fabric.properties
 \.DS_Store
 
-cv\.txt
+/cv.txt
 
-cv\.xlsx
+/cv.xlsx
+
+
