@@ -1,75 +1,91 @@
-nicolas buissart
+Denis Biryukov
 
-beauchamp (95) - email me on indeed: indeed.com/r/nicolas-buissart/abab6e2e9d3337e8
+Research Scientist / Software developer
 
-expÉrience
+Le Plessis-Robinson (92) - Email me on Indeed: indeed.com/r/Denis-Biryukov/ff3bfb7aa6897871
 
-data scientist ( stage )
+EXPÉRIENCE
 
-société générale  -  hauts-de-seine -
+Research Scientist (acoustic wireless networks)
 
-juin 2017 - novembre 2017
+Schlumberger  -  Clamart (92) -
 
-au cours de ce stage j’ai travaillé sur la réconciliation automatique de la comptabilité économique et de gestion.
-mise en place de deux modèles de détection d’écart,un basé sur un système de scoring de la rareté des
-écarts, le deuxième détecte les écarts récurrents. j’ai pu travailler sur des modèles tel que: randomforest,
-gradientboost  regression  et  logistic  regression.  langages  utilisés:  python(les  modules  scikit-learn  et
-pandas) logiciel: tableau pour valider les modèles et mise en place de kpi
+2016 - actuellement
 
-stagiaire
+1.Developed Network Simulator for joint performance evaluation of Network and Physical layers
+2.Developed application for automated post-job analysis of network performance
+3.Developed application for automated analysis and processing of acoustic noise data recorded during the job
+4. Developed and implemented algorithm for estimating speed of moving pipe with markers placed on it from
+a video record (Computer vision + Machine learning)
+Technologies: Intel Parallel Studio, C++, C#, Matlab, Python, SQLite
 
-humbrain  -  paris (75) -
+R & D Engineer
 
-mai 2016 - septembre 2016
+Schlumberger  -  Clamart (92) -
 
-stagiaire humbrain
-humbrain est une entreprise réalisant des prestations comme la mise en place de services au sein d'entreprise
-j'ai réalise les missions suivantes
-mail auprès de l'entreprise humbrain:
-buissartni@ • création et mise à jour du site web de la société.
-eisti.eu • mise en place de trois indicateurs sur les différents services fourni par l'entreprise afin de savoir l'état
-de ces-derniers.
-• mise en place d'un tableau de bord.
-programmation • participation aux réunions avec les clients.
-• réflexion autour de l'amélioration de certains algorithmes.
+2009 - 2016
 
-gérant
+1.Developed Simulator based on Boundary Elements Method for heterogeneous reservoir modeling
+2.Conducted research on application of Boundary Elements Method to modeling heterogeneous (especially
+fractured) reservoirs
+3.Gave courses to undergraduate students at L'Ecole Nationale Supérieure de Géologie (Nancy, France) on
+usage of MATLAB and mathematics in oilfield industry
+4.Developed and implemented new mathematical models for wireline and well testing purposes
+Technologies: Intel Parallel Studio, C++, Matlab
 
-youtube -
+Data Base Software Developer
 
-mai 2011 - septembre 2013
+1C VDGB  -  Moscow, RU -
 
-j'ai été gérant d'une chaine youtube pendant deux ans j'ai totalisé plus de deux millions de vues pendant
-cette période. cela m'a appris à être sérieux et ordonné dans mon travail.
+2006 - 2007
 
-formation
+1.Modified existing software platforms (trading and accounting databases) to suit individual client needs
+Technologies: Proprietary Language akin to mix of Visual Basic and SQL
 
-diplôme d'ingénieur en voix
+FORMATION
 
-ecole internationale des sciences du traitement de l'information  -  cergy (95)
+Machine Learning
 
-2012 - 2017
+Coursera (Stanford University)
 
-compÉtence
+2017 - 2017
 
-scala, python, r, sql, spark, anglais toeic 870
+Ingénieure + Master en Hydrodynamics and Reservoir Engineering
 
-informations complÉmentaires
+Ecole Nationale Supérieure de Géologie/Ecole Nationale Supérieure d’Electricité et de Mécanique  -
+Nancy (54)
 
-compétences l'aide d'un random forest.
-• analyse des tweets avec tweepy - python: similarité entre les
-retweets en rapport avec obama et trump ( utilisation de la libraire pan-
-das).
-• projet de text-mining sur les différents programmes présidentiels de
-2017: machine learning sur les programmes présidentiels, apprentis-
-sage sur les programmes de 2012 afin de prédire le bord politique d'un
-programme quelconque de 2017.
-• analyse de série temporelle.
-• projet spark sur un système de recommendation.
-en plus de ma formation je suis des cours sur data camp:
-• text mining: bag of words
-• manipulating dataframes with pandas
-• python data science toolbox
-• financial trading in r.
+2007 - 2009
+
+Bsc. en Applied Mathematics and Informatics
+
+Bauman Moscow State Technical University  -  Moscow, RU
+
+2003 - 2007
+
+COMPÉTENCE
+
+MATHEMATICS (10 ans minimum), C++ (OpenGl, mkl, ipp, open mp, simd, CUDA) (8 ans), MATLAB (8
+ans), SQL (2 ans), C# (1 an), python (1 an), Fortran (2 ans), Machine learning (1 an), Assembler (1 an)
+
+LIENS
+
+https://github.com/Holic75/Baldurs-gate-dnd-3.5
+
+INFORMATIONS COMPLÉMENTAIRES
+
+Skills
+Foreign Languages: English: fluent, French: fluent, Russian: native, German: intermediate
+
+Programming  Languages:  C++  (OpenGL,  Intel  MKL,  OpenMP,  SIMD,  CUDA),  C#,  Python,  SQL,  Fortran,
+Matlab, Assembler
+
+Development Environments: MS Visual Studio, Intel Parallel Studio, Eclipse (gcc, icc)
+
+Mathematics: FEM/FVM/BEM techniques, Integral Equations, Machine Learning, Signal Processing
+
+Personal Projects
+https://github.com/Holic75/Baldurs-gate-dnd-3.5 - a WeiDu mod for Bal- durs Gate: Enchanced Edition that
+changes 2ed ADnD rules to DnD 3.5
 
 

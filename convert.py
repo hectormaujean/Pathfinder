@@ -9,8 +9,8 @@ from cStringIO import StringIO
 import xlsxwriter
 import re
 from genderize import Genderize
-import enchant
-from enchant.checker import SpellChecker
+#import enchant
+#from enchant.checker import SpellChecker
 from googletrans import Translator
 
 # Convertit un fichier pdf en txt
@@ -65,8 +65,21 @@ def findElement(regex, splitList, tab):
         tab.append(element)
     return tab
 
+#Trouve un élément dans une ligne: si l'élément n'est pas trouvé, récupère la ligne entière
+def findElementLine(regex, modulo, lineNumber, splitList, tab):
+    count = 0
+    for line in splitList:
+        element = re.findall(regex, line)
+        if not element:
+            if count%modulo == lineNumber:
+                tab.append(splitList[count])
+        else:
+            tab.append(element)
+        count += 1
+    return tab
 
-txt = convert('pdfminer/samples/Nicolas-Buissart.pdf')
+
+txt = convert('pdfminer/samples/Denis-Biryukov.pdf')
 # met en miniscule
 #txt = txt.lower()
 #print(txt)
@@ -83,10 +96,10 @@ postesList = []
 
 print('experience')
 
-experience = findBlock('EXPÉRIENCE(?s)(.*)[^a-zA-Z]FORMATION', file)
-splitExperience1 = splitLine(experience)
-splitExperience2 = cleanSplitLine(splitExperience1)
-postes = findElement('', splitExperience2, postesList)
+#experience = findBlock('EXPÉRIENCE(?s)(.*)[^a-zA-Z]FORMATION', file)
+#splitExperience1 = splitLine(experience)
+#splitExperience2 = cleanSplitLine(splitExperience1)
+#postes = findElement('', splitExperience2, postesList)
 
 # Bloc FORMATION
 formationsList = []
@@ -96,8 +109,8 @@ print('formation')
 formation = findBlock('FORMATION(?s)(.*)[^a-zA-Z]COMPÉTENCE', file)
 splitFormation1 = splitLine(formation)
 splitFormation2 = cleanSplitLine(splitFormation1)
-#mettre la regex qui recupere l'element formation
-formations = findElement('', splitFormation2, formationsList)
+formations = findElementLine('.*(?= en )', 3, 0, splitFormation2, formationsList)
+print(formations)
 
 ######fonction qui permet de connaitre le sexe
 def gender():
