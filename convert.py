@@ -57,26 +57,26 @@ def correctFR(text):
 
 ######fonction qui traduit les CVen francais et qui corrige. Il faut distinguer CV FR et CV EN
 def correction(x):
-    mot_non_traduit=['MASTER', 'MACHIN']
+    mot_non_traduit=['master']
     correct_list=[]
     for element in x:
         # transforme la liste en string et corrige
         listToStr=','.join(element)
-        print("***PRINT TEST***listToStr:" , listToStr)
+#        print("***PRINT TEST***listToStr:" , listToStr)
         if listToStr not in mot_non_traduit:
             # on utilise le module translator
             translator = Translator()
             # on traduit en francais
             engToFr = translator.translate(listToStr, dest='fr')
             engToFr = engToFr.text
-            print("***PRINT TEST***translation", engToFr)
+#            print("***PRINT TEST***translation", engToFr)
             # puis on corrige
             correct_poste = correctFR(engToFr)
-            print("***PRINT TEST***correct", correct_poste)
+#            print("***PRINT TEST***correct", correct_poste)
         else:
             # corrige
             correct_poste = correctFR(listToStr)
-            print("***PRINT TEST***correct",correct_poste)
+#            print("***PRINT TEST***correct",correct_poste)
     #transforme string en liste pour les dictionnaires
     #    correct_poste = correct_poste.split('\n')
         correct_list.append(correct_poste)
@@ -186,24 +186,35 @@ diplomes_list = []
 diplomes = findElementLine('.*(?= en )', 3, 0, splitFormation2, formationsList)
 diplomes = cleanWhiteSpace(diplomes)
 for element in diplomes:
-    strToList = element.split('\n')
+    strToList = element.lower().split('\n')
     diplomes_list.append(strToList)
 print('diplomes: ', diplomes_list)
 formationsList = []
 correction(diplomes_list)
 
 #DOMAINES
+domaines_list=[]
 domaines = findElement('(?<= en ).*', splitFormation2, formationsList)
 domaines = cleanWhiteSpace(domaines)
-print('domaines: ', domaines)
+for element in domaines:
+    #on convertis la liste en str pour pouvoir mettre en minuscule
+    listToStr = ','.join(element)
+    #puis on remet dans une liste
+    strToList = listToStr.lower().split('\n')
+    domaines_list.append(strToList)
+print('domaines: ', domaines_list)
 formationsList = []
-correction(domaines)
+correction(domaines_list)
 
 #ECOLES
+ecoles_list=[]
 months = "janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre"
 ecoles = findElementLine('(?!['+months+' \d]).*(?= -)', 3, 1, splitFormation2, formationsList)
 ecoles = cleanWhiteSpace(ecoles)
-print('ecole: ', ecoles)
+for element in ecoles:
+    strToList = element.lower().split('\n')
+    ecoles_list.append(strToList)
+print('ecole: ', ecoles_list)
 formationsList = []
 
 
