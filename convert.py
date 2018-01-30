@@ -158,7 +158,8 @@ def gender():
     return sexe['gender']
 
 print("GENDER:")
-print(gender())
+gender = gender()
+print(gender)
 
 # Bloc EXPÉRIENCE
 postesList = []
