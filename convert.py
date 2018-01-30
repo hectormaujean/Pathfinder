@@ -37,6 +37,53 @@ def convert(path):
     retstr.close()
     return text
 
+
+
+######fonction qui corrige les fautes en francais
+def correctFR(text):
+ my_dict = enchant.DictWithPWL("fr_FR", 'liste_orthographe.txt')
+ chkr = enchant.checker.SpellChecker(my_dict)
+ b = chkr.set_text(text)
+ for err in chkr:
+    # print ('erreur:', err.word)
+     if not (err.suggest(b) == [] ):
+         sug = err.suggest()[0]
+   #      print ('suggestion:', sug)
+         err.replace(sug)
+ c = chkr.get_text()  # retourne le texte corrige
+ return c
+
+
+
+######fonction qui traduit les CVen francais et qui corrige. Il faut distinguer CV FR et CV EN
+def correction(x):
+    mot_non_traduit=['MASTER', 'MACHIN']
+    correct_list=[]
+    for element in x:
+        # transforme la liste en string et corrige
+        listToStr=','.join(element)
+        print("***PRINT TEST***listToStr:" , listToStr)
+        if listToStr not in mot_non_traduit:
+            # on utilise le module translator
+            translator = Translator()
+            # on traduit en francais
+            engToFr = translator.translate(listToStr, dest='fr')
+            engToFr = engToFr.text
+            print("***PRINT TEST***translation", engToFr)
+            # puis on corrige
+            correct_poste = correctFR(engToFr)
+            print("***PRINT TEST***correct", correct_poste)
+        else:
+            # corrige
+            correct_poste = correctFR(listToStr)
+            print("***PRINT TEST***correct",correct_poste)
+    #transforme string en liste pour les dictionnaires
+    #    correct_poste = correct_poste.split('\n')
+        correct_list.append(correct_poste)
+    print("poste sans faute:",correct_list)
+    return correct_list
+
+
 splitline2 = []
 
 # Trouve le bloc (EXPÉRIENCE, FORMATION, COMPÉTENCES...)
@@ -98,6 +145,21 @@ file.close()
 #Reouverture du fichier pour la recherche
 file=open('cv.txt','r')
 
+
+#####fonction qui permet de connaitre le sexe
+def gender():
+    #On defini le prenom via une RegEx qui prend le premier mot du CV
+    defPrenom = re.findall('\A[a-zA-Z{Ë, Ï, Ö, Œ, ï, ö, é,œ,â, ë}]+ ',txt)
+    #On supprime l'espace
+    for suppEsp in defPrenom:
+        prenom = suppEsp.strip()
+    #on defini le sexe a partir du prenom
+    sexe = Genderize().get1(prenom)
+    return sexe['gender']
+
+print("GENDER:")
+print(gender())
+
 # Bloc EXPÉRIENCE
 postesList = []
 
@@ -117,24 +179,32 @@ formation = findBlock('FORMATION(?s)(.*)[^a-zA-Z]COMPÉTENCE', file)
 splitFormation1 = splitLine(formation)
 splitFormation2 = cleanSplitLine(splitFormation1)
 
+
 #DIPLOMES
+diplomes_list = []
 diplomes = findElementLine('.*(?= en )', 3, 0, splitFormation2, formationsList)
 diplomes = cleanWhiteSpace(diplomes)
-print('diplomes: ', diplomes)
+for element in diplomes:
+    strToList = element.split('\n')
+    diplomes_list.append(strToList)
+print('diplomes: ', diplomes_list)
 formationsList = []
+correction(diplomes_list)
 
 #DOMAINES
 domaines = findElement('(?<= en ).*', splitFormation2, formationsList)
 domaines = cleanWhiteSpace(domaines)
 print('domaines: ', domaines)
 formationsList = []
+correction(domaines)
 
 #ECOLES
 months = "janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre"
 ecoles = findElementLine('(?!['+months+' \d]).*(?= -)', 3, 1, splitFormation2, formationsList)
 ecoles = cleanWhiteSpace(ecoles)
-print('ecoles: ', ecoles)
+print('ecole: ', ecoles)
 formationsList = []
+
 
 #LIEUX (no need atm)
 #lieux = findElement('(?<= - ).*', splitFormation2, formationsList)
@@ -143,19 +213,6 @@ formationsList = []
 #formationsList = []
 
 
-
-#####fonction qui permet de connaitre le sexe
-def gender():
-    #On defini le prenom via une RegEx qui prend le premier mot du CV
-    defPrenom = re.findall('\A[a-zA-Z{Ë, Ï, Ö, Œ, ï, ö, é,œ,â, ë}]+ ',txt)
-    #On supprime l'espace
-    for suppEsp in defPrenom:
-        prenom = suppEsp.strip()
-    #on defini le sexe a partir du prenom
-    sexe = Genderize().get1(prenom)
-    return sexe['gender']
-
-print("gender", gender())
 
 
 # on effectue la recherche du block
@@ -179,46 +236,7 @@ print("gender", gender())
 #for element in postes:
 #    print(element)
 
-#teste avec une liste de mot en anglais et francais en attendant les RegEx
-#liste_poste correspond à postes
-liste_poste=[['engineeer'], ['matheatics'], ['caissiere']]
 
-
-######fonction qui corrige les fautes en francais
-def correctFR(text):
- my_dict = enchant.DictWithPWL("fr_FR", 'liste_orthographe.txt')
- chkr = enchant.checker.SpellChecker(my_dict)
- b = chkr.set_text(text)
- for err in chkr:
-    # print ('erreur:', err.word)
-     if not (err.suggest(b) == [] ):
-         sug = err.suggest()[0]
-   #      print ('suggestion:', sug)
-         err.replace(sug)
- c = chkr.get_text()  # retourne le texte corrige
- return c
-
-
-######fonction qui traduit les CVen francais et qui corrige. Il faut distinguer CV FR et CV EN
-correct_postes=[]
-for element in liste_poste:
-    # transforme la liste en string et corrige
-    listToStr=','.join(element)
-    print("affiche le poste d'origine:" , listToStr)
-    # on utilise le module translator
-    translator = Translator()
-    # on traduit en francais
-    engToFr = translator.translate(listToStr, dest='fr')
-    engToFr = engToFr.text
-    print("translation", engToFr)
-    #puis on corrige
-    correct_poste = correctFR(engToFr)
-    print("correct",correct_poste)
-#transforme string en liste pour les dictionnaires
-    correct_poste = correct_poste.split('\n')
-    correct_postes.append(correct_poste)
-
-print("resultat final: poste sans faute:",correct_postes)
 
 
 workbook = xlsxwriter.Workbook('cv.xlsx')
