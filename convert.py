@@ -189,8 +189,8 @@ for element in diplomes:
     strToList = element.lower().split('\n')
     diplomes_list.append(strToList)
 print('diplomes: ', diplomes_list)
+diplomes_list = correction(diplomes_list)
 formationsList = []
-correction(diplomes_list)
 
 #DOMAINES
 domaines_list=[]
@@ -203,8 +203,9 @@ for element in domaines:
     strToList = listToStr.lower().split('\n')
     domaines_list.append(strToList)
 print('domaines: ', domaines_list)
+domaines_list = correction(domaines_list)
 formationsList = []
-correction(domaines_list)
+
 
 #ECOLES
 ecoles_list=[]
