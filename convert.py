@@ -9,8 +9,8 @@ from cStringIO import StringIO
 import xlsxwriter
 import re
 from genderize import Genderize
-#import enchant
-#from enchant.checker import SpellChecker
+import enchant
+from enchant.checker import SpellChecker
 from googletrans import Translator
 
 # Convertit un fichier pdf en txt
@@ -48,7 +48,7 @@ def findBlock(regex, textFile):
 def splitLine(block):
     splitline = ""
     for data in block:
-        splitline = data.split("\n")
+        splitline = data.split("\n\n")
     return splitline
 
 # Supprimme les cases vides
@@ -74,12 +74,19 @@ def findElementLine(regex, modulo, lineNumber, splitList, tab):
             if count%modulo == lineNumber:
                 tab.append(splitList[count])
         else:
-            tab.append(element)
+            tab.append(element[0])
         count += 1
     return tab
 
+def cleanWhiteSpace(tab):
+    tab = filter(None, tab)
+    length = len(tab)
+    for i in range(length):
+        tab[i] = filter(None, tab[i])
+    return tab
 
-txt = convert('pdfminer/samples/Denis-Biryukov.pdf')
+
+txt = convert('pdfminer/samples/Imene-Meghoufel.pdf')
 # met en miniscule
 #txt = txt.lower()
 #print(txt)
@@ -104,15 +111,40 @@ print('experience')
 # Bloc FORMATION
 formationsList = []
 
-print('formation')
+print('BLOC FORMATION')
 
 formation = findBlock('FORMATION(?s)(.*)[^a-zA-Z]COMPÉTENCE', file)
 splitFormation1 = splitLine(formation)
 splitFormation2 = cleanSplitLine(splitFormation1)
-formations = findElementLine('.*(?= en )', 3, 0, splitFormation2, formationsList)
-print(formations)
 
-######fonction qui permet de connaitre le sexe
+#DIPLOMES
+diplomes = findElementLine('.*(?= en )', 3, 0, splitFormation2, formationsList)
+diplomes = cleanWhiteSpace(diplomes)
+print('diplomes: ', diplomes)
+formationsList = []
+
+#DOMAINES
+domaines = findElement('(?<= en ).*', splitFormation2, formationsList)
+domaines = cleanWhiteSpace(domaines)
+print('domaines: ', domaines)
+formationsList = []
+
+#ECOLES
+months = "janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre"
+ecoles = findElementLine('(?!['+months+' \d]).*(?= -)', 3, 1, splitFormation2, formationsList)
+ecoles = cleanWhiteSpace(ecoles)
+print('ecoles: ', ecoles)
+formationsList = []
+
+#LIEUX (no need atm)
+#lieux = findElement('(?<= - ).*', splitFormation2, formationsList)
+#lieux = cleanWhiteSpace(lieux)
+#print('lieux: ', lieux)
+#formationsList = []
+
+
+
+#####fonction qui permet de connaitre le sexe
 def gender():
     #On defini le prenom via une RegEx qui prend le premier mot du CV
     defPrenom = re.findall('\A[a-zA-Z{Ë, Ï, Ö, Œ, ï, ö, é,œ,â, ë}]+ ',txt)

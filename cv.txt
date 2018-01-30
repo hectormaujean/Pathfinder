@@ -1,91 +1,87 @@
-Denis Biryukov
+Imene Meghoufel
 
-Research Scientist / Software developer
+Paris 19e (75) - Email me on Indeed: indeed.com/r/Imene-Meghoufel/59328653a5d2b855
 
-Le Plessis-Robinson (92) - Email me on Indeed: indeed.com/r/Denis-Biryukov/ff3bfb7aa6897871
+Disposé(e) à déménager n'importe où
 
 EXPÉRIENCE
 
-Research Scientist (acoustic wireless networks)
+Développeur Data scientist
 
-Schlumberger  -  Clamart (92) -
+BEREXIA conseil  -  La Défense (92) -
 
-2016 - actuellement
+mars 2017 - septembre 2017
 
-1.Developed Network Simulator for joint performance evaluation of Network and Physical layers
-2.Developed application for automated post-job analysis of network performance
-3.Developed application for automated analysis and processing of acoustic noise data recorded during the job
-4. Developed and implemented algorithm for estimating speed of moving pipe with markers placed on it from
-a video record (Computer vision + Machine learning)
-Technologies: Intel Parallel Studio, C++, C#, Matlab, Python, SQLite
+Implémentation  d'un  outil  informatique  qui  permet  l'extraction  automatique  des  connaissances  des  pièces
+jointes via un service de reconnaissance de type doc hébergé sur Amazon
+Outils:Python,  Java,  Linux,  Windows,  GPU,  Deep  Learning,  Faster-RCNN  machine  learning,  Réseaux  de
+neurones, LabelImg, ImageMagick Reconnaissance des formes, Multiprocessing, Caffe ElementTree, LSTM,
+Tesseract, Cloud "AWS"
 
-R & D Engineer
+STAGE autonome, Business Analyste
 
-Schlumberger  -  Clamart (92) -
+BEREXIA Conseil  -  La Défense (92) -
 
-2009 - 2016
+juin 2016 - septembre 2016
 
-1.Developed Simulator based on Boundary Elements Method for heterogeneous reservoir modeling
-2.Conducted research on application of Boundary Elements Method to modeling heterogeneous (especially
-fractured) reservoirs
-3.Gave courses to undergraduate students at L'Ecole Nationale Supérieure de Géologie (Nancy, France) on
-usage of MATLAB and mathematics in oilfield industry
-4.Developed and implemented new mathematical models for wireline and well testing purposes
-Technologies: Intel Parallel Studio, C++, Matlab
+• Déploiement d'une application dédiée au domaine de l'assurance
+• Recueil du besoin client et Définition des spécifications fonctionnelles détaillées
+• Participation aux réunions de suivi et de validation des spécifications fonctionnelles
+• Détailler les cas de test et valoriser les résultats attendus et Rédaction de compte rendu
+• Remonter les anomalies et valider leur correction en collaboration avec l'équipe de développement
+• Réceptionnez et traitez les incidents détectés en production par les utilisateurs
+Méthode Agile SQL
 
-Data Base Software Developer
+STAGE autonome, Ingénieur en Informatique
 
-1C VDGB  -  Moscow, RU -
+École Nationale des Sciences -
 
-2006 - 2007
+juin 2014 - juin 2014
 
-1.Modified existing software platforms (trading and accounting databases) to suit individual client needs
-Technologies: Proprietary Language akin to mix of Visual Basic and SQL
+de l'informatique (ENSI),
+Alger, Algérie
 
 FORMATION
 
-Machine Learning
+Anglais
 
-Coursera (Stanford University)
+Institut Privé CAMPUS LANGUES
 
-2017 - 2017
+2017 - 2018
 
-Ingénieure + Master en Hydrodynamics and Reservoir Engineering
+MASTER
 
-Ecole Nationale Supérieure de Géologie/Ecole Nationale Supérieure d’Electricité et de Mécanique  -
-Nancy (54)
+Université PARIS DESCARTES  -  Paris (75)
 
-2007 - 2009
+2015 - 2017
 
-Bsc. en Applied Mathematics and Informatics
+MASTER en Génie Informatique
 
-Bauman Moscow State Technical University  -  Moscow, RU
+Faculté de technologie, Université DJILLALI LIA
 
-2003 - 2007
+2013 - 2015
+
+LICENCE en Génie Informatique
+
+Faculté de technologie, Université DJILLALI LIA
+
+2012 - 2013
 
 COMPÉTENCE
 
-MATHEMATICS (10 ans minimum), C++ (OpenGl, mkl, ipp, open mp, simd, CUDA) (8 ans), MATLAB (8
-ans), SQL (2 ans), C# (1 an), python (1 an), Fortran (2 ans), Machine learning (1 an), Assembler (1 an)
+INTELLIGENCE ARTIFICIELLE (Moins d'un an), AJAX (Moins d'un an), C (Moins d'un an), C++ (Moins d'un
+an), CSS (Moins d'un an)
 
 LIENS
 
-https://github.com/Holic75/Baldurs-gate-dnd-3.5
+http://linkedin.com/in/imene-meghoufel
 
 INFORMATIONS COMPLÉMENTAIRES
 
-Skills
-Foreign Languages: English: fluent, French: fluent, Russian: native, German: intermediate
-
-Programming  Languages:  C++  (OpenGL,  Intel  MKL,  OpenMP,  SIMD,  CUDA),  C#,  Python,  SQL,  Fortran,
-Matlab, Assembler
-
-Development Environments: MS Visual Studio, Intel Parallel Studio, Eclipse (gcc, icc)
-
-Mathematics: FEM/FVM/BEM techniques, Integral Equations, Machine Learning, Signal Processing
-
-Personal Projects
-https://github.com/Holic75/Baldurs-gate-dnd-3.5 - a WeiDu mod for Bal- durs Gate: Enchanced Edition that
-changes 2ed ADnD rules to DnD 3.5
+Langages de programmation Python, C/C++, JavaScript, HTML/CSS, PHP, SQL, AJAX
+Tools R, Knime, Jupyter, notebook, Matlab, LabView, Canopy, Git/GitHub, Assembleur: […]
+ML/DL libraries and frameworks scikit-learn, matplotlib, Text-Mining, SciPy, Numpy, pandas, Programmation
+Agent JADE
+Interêt Sport, Intelligence Artificielle et Apprentissage automatique
 
 
