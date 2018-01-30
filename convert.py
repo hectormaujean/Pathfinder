@@ -213,7 +213,7 @@ months = "janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|n
 ecoles = findElementLine('(?!['+months+' \d]).*(?= -)', 3, 1, splitFormation2, formationsList)
 ecoles = cleanWhiteSpace(ecoles)
 for element in ecoles:
-    strToList = element.lower().split('\n')
+    strToList = element.lower()
     ecoles_list.append(strToList)
 print('ecole: ', ecoles_list)
 formationsList = []
