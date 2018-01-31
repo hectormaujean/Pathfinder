@@ -12,6 +12,13 @@ from genderize import Genderize
 import enchant
 from enchant.checker import SpellChecker
 from googletrans import Translator
+import urllib2
+from urllib2 import Request
+from pyPdf import PdfFileWriter, PdfFileReader
+from StringIO import StringIO
+
+
+
 
 # Convertit un fichier pdf en txt
 def convert(path):
@@ -132,6 +139,67 @@ def cleanWhiteSpace(tab):
         tab[i] = filter(None, tab[i])
     return tab
 
+#####fonction qui permet de connaitre le sexe
+def gender():
+    #On defini le prenom via une RegEx qui prend le premier mot du CV
+    defPrenom = re.findall('\A[a-zA-Z{Ë, Ï, Ö, Œ, ï, ö, é,œ,â, ë}]+ ',txt)
+    #On supprime l'espace
+    for suppEsp in defPrenom:
+        prenom = suppEsp.strip()
+    #on defini le sexe a partir du prenom
+    sexe = Genderize().get1(prenom)
+    return sexe['gender']
+
+
+
+#Ouverture du fichier où on stock la variable en mode lecture
+path = open('output_variable.txt','rb')
+#Récupération du contenu du fichier
+lignes = path.readlines()
+#on convertie le contenu (str) en int et on le declare dans i
+for variable in lignes:
+    #print variable
+    i=int(variable)
+
+b = True
+
+
+
+while(b):
+    try:
+        url = "https://pixis.co/projetcv/A"+str(i)+".pdf"
+        writer = PdfFileWriter()
+        remoteFile = urllib2.urlopen(Request(url)).read()
+        memoryFile = StringIO(remoteFile)
+        pdfFile = PdfFileReader(memoryFile)
+
+        for pageNum in xrange(pdfFile.getNumPages()):
+            currentPage = pdfFile.getPage(pageNum)
+            writer.addPage(currentPage)
+            outputStream = open("pdfminer/samples/CV"+str(i)+".pdf","wb")
+            writer.write(outputStream)
+            outputStream.close()
+
+        i += 1
+
+    except urllib2.HTTPError as err:
+        if err.code == 404:
+            print("No more files")
+            b = False
+        else:
+                raise
+
+print('i',i)
+#Ouverture du fichier où on stock la variable en mode écriture
+f = open('output_variable.txt', 'w')
+#on ecrit la nouvelle variable en str
+f.write(str(i))
+f.close()
+
+
+
+
+
 
 txt = convert('pdfminer/samples/Imene-Meghoufel.pdf')
 # met en miniscule
@@ -145,17 +213,6 @@ file.close()
 #Reouverture du fichier pour la recherche
 file=open('cv.txt','r')
 
-
-#####fonction qui permet de connaitre le sexe
-def gender():
-    #On defini le prenom via une RegEx qui prend le premier mot du CV
-    defPrenom = re.findall('\A[a-zA-Z{Ë, Ï, Ö, Œ, ï, ö, é,œ,â, ë}]+ ',txt)
-    #On supprime l'espace
-    for suppEsp in defPrenom:
-        prenom = suppEsp.strip()
-    #on defini le sexe a partir du prenom
-    sexe = Genderize().get1(prenom)
-    return sexe['gender']
 
 print("GENDER:")
 gender = gender()
@@ -250,23 +307,3 @@ formationsList = []
 #    print(element)
 
 
-
-
-workbook = xlsxwriter.Workbook('cv.xlsx')
-worksheet = workbook.add_worksheet()
-data = open('cv.txt','r')
-
-#count lines
-linelist = data.readlines()
-count = len(linelist)
-print count          #check lines
-
-#make each line and print in excel
-for n in range (0, count):
-    line = linelist[n]
-    line = line.decode('utf8')
-    splitline = line.split("\n")
-    worksheet.write_row(0, n, splitline)
-    n += 1
-
-workbook.close()
