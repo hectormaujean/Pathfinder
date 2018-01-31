@@ -27,7 +27,7 @@ def convert(path):
     codec = 'utf-8'
     laparams = LAParams()
     device = TextConverter(rsrcmgr, retstr, codec=codec, laparams=laparams)
-    fp = file(path, 'rb')
+    fp = open(path, 'rb')
     interpreter = PDFPageInterpreter(rsrcmgr, device)
     password = ""
     maxpages = 0
@@ -62,15 +62,18 @@ def correctFR(text):
 
 
 
+
 ######fonction qui traduit les CVen francais et qui corrige. Il faut distinguer CV FR et CV EN
 def correction(x):
-    mot_non_traduit=['master']
+    listeortho = open('liste_orthographe.txt', 'rb')
+    # Récupération du contenu du fichier
+    lignes = listeortho.readlines()
     correct_list=[]
     for element in x:
         # transforme la liste en string et corrige
         listToStr=','.join(element)
 #        print("***PRINT TEST***listToStr:" , listToStr)
-        if listToStr not in mot_non_traduit:
+        if listToStr not in lignes:
             # on utilise le module translator
             translator = Translator()
             # on traduit en francais
@@ -164,7 +167,7 @@ for variable in lignes:
 b = True
 
 
-
+#telecharge les cv du serveur
 while(b):
     try:
         url = "https://pixis.co/projetcv/A"+str(i)+".pdf"
@@ -181,6 +184,7 @@ while(b):
             outputStream.close()
 
         i += 1
+
 
     except urllib2.HTTPError as err:
         if err.code == 404:
@@ -199,34 +203,32 @@ f.close()
 
 
 
-
-
+#print("------ cv " + str(i) + "------")
 txt = convert('pdfminer/samples/Imene-Meghoufel.pdf')
 # met en miniscule
-#txt = txt.lower()
-#print(txt)
+# txt = txt.lower()
+# print(txt)
 file = open("cv.txt", "w")
 file.write(txt)
 
-file.close()
+# file.close()
 
-#Reouverture du fichier pour la recherche
-file=open('cv.txt','r')
-
+# Reouverture du fichier pour la recherche
+file = open("cv.txt", "r")
 
 print("GENDER:")
-gender = gender()
-print(gender)
+# gender = gender()
+print(gender())
 
 # Bloc EXPÉRIENCE
 postesList = []
 
 print('experience')
 
-#experience = findBlock('EXPÉRIENCE(?s)(.*)[^a-zA-Z]FORMATION', file)
-#splitExperience1 = splitLine(experience)
-#splitExperience2 = cleanSplitLine(splitExperience1)
-#postes = findElement('', splitExperience2, postesList)
+# experience = findBlock('EXPÉRIENCE(?s)(.*)[^a-zA-Z]FORMATION', file)
+# splitExperience1 = splitLine(experience)
+# splitExperience2 = cleanSplitLine(splitExperience1)
+# postes = findElement('', splitExperience2, postesList)
 
 # Bloc FORMATION
 formationsList = []
@@ -237,37 +239,35 @@ formation = findBlock('FORMATION(?s)(.*)[^a-zA-Z]COMPÉTENCE', file)
 splitFormation1 = splitLine(formation)
 splitFormation2 = cleanSplitLine(splitFormation1)
 
-
-#DIPLOMES
+# DIPLOMES
 diplomes_list = []
 diplomes = findElementLine('.*(?= en )', 3, 0, splitFormation2, formationsList)
 diplomes = cleanWhiteSpace(diplomes)
 for element in diplomes:
     strToList = element.lower().split('\n')
     diplomes_list.append(strToList)
-print('diplomes: ', diplomes_list)
+# print('diplomes: ', diplomes_list)
 diplomes_list = correction(diplomes_list)
 formationsList = []
 
-#DOMAINES
-domaines_list=[]
+# DOMAINES
+domaines_list = []
 domaines = findElement('(?<= en ).*', splitFormation2, formationsList)
 domaines = cleanWhiteSpace(domaines)
 for element in domaines:
-    #on convertis la liste en str pour pouvoir mettre en minuscule
+    # on convertis la liste en str pour pouvoir mettre en minuscule
     listToStr = ','.join(element)
-    #puis on remet dans une liste
+    # puis on remet dans une liste
     strToList = listToStr.lower().split('\n')
     domaines_list.append(strToList)
-print('domaines: ', domaines_list)
+# print('domaines: ', domaines_list)
 domaines_list = correction(domaines_list)
 formationsList = []
 
-
-#ECOLES
-ecoles_list=[]
+# ECOLES
+ecoles_list = []
 months = "janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre"
-ecoles = findElementLine('(?!['+months+' \d]).*(?= -)', 3, 1, splitFormation2, formationsList)
+ecoles = findElementLine('(?![' + months + ' \d]).*(?= -)', 3, 1, splitFormation2, formationsList)
 ecoles = cleanWhiteSpace(ecoles)
 for element in ecoles:
     strToList = element.lower()
@@ -275,35 +275,32 @@ for element in ecoles:
 print('ecole: ', ecoles_list)
 formationsList = []
 
-
-#LIEUX (no need atm)
-#lieux = findElement('(?<= - ).*', splitFormation2, formationsList)
-#lieux = cleanWhiteSpace(lieux)
-#print('lieux: ', lieux)
-#formationsList = []
-
-
-
+# LIEUX (no need atm)
+# lieux = findElement('(?<= - ).*', splitFormation2, formationsList)
+# lieux = cleanWhiteSpace(lieux)
+# print('lieux: ', lieux)
+# formationsList = []
 
 # on effectue la recherche du block
-#experience = findBlock('expÉrience(?s)(.*)[^a-zA-Z]formation', file)
-#print("exp", experience)
+# experience = findBlock('expÉrience(?s)(.*)[^a-zA-Z]formation', file)
+# print("exp", experience)
 
-#splitline = ""
-#splitline2 = []
+# splitline = ""
+# splitline2 = []
 
-#suppression des cases vides
-#for case in splitline:
+# suppression des cases vides
+# for case in splitline:
 #    if case != '':
 #        splitline2.append(case)
 
-#postes = []
-#for line in splitline2:
+# postes = []
+# for line in splitline2:
 #    poste = re.findall('.+?(?=at )', line)
 #    print(poste)
 #    postes.append(poste)
 
-#for element in postes:
+# for element in postes:
 #    print(element)
+
 
 
