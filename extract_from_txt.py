@@ -146,7 +146,7 @@ def findBlocks(file):
             if (competences != ""):
 
                 # On supprime tout ce qui est entre parenthèses (duree de formation...)
-                cleanSkills = re.sub(r'[)]∗', '', competences)
+                cleanSkills = re.sub(r'\([^)]*\)', '', competences)
 
                 # On récupère les compétences qui sont entre les virgules
                 skills = cleanSkills.split(",")
@@ -173,7 +173,7 @@ def findBlocks(file):
                     skills[-1] = firstWord
                 else:
                     skills[-1] = firstWord[0]
-    return skills, formations
+    return skillsNewList, formations
 
 
 ################  FONCTIONS POUR LE BLOC EXPERIENCE (SAFOUEN)  #######################
