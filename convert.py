@@ -16,7 +16,7 @@ import urllib2
 from urllib2 import Request
 from pyPdf import PdfFileWriter, PdfFileReader
 from StringIO import StringIO
-
+import extract_from_txt
 
 
 
@@ -90,69 +90,20 @@ def correction(x):
     #transforme string en liste pour les dictionnaires
     #    correct_poste = correct_poste.split('\n')
         correct_list.append(correct_poste)
-    print("poste sans faute:",correct_list)
+    #print("poste sans faute:",correct_list)
     return correct_list
 
-
-splitline2 = []
-
-# Trouve le bloc (EXPÉRIENCE, FORMATION, COMPÉTENCES...)
-def findBlock(regex, textFile):
-    block = re.findall(regex, textFile.read())
-    return block
-
-# Split le bloc par ligne
-def splitLine(block):
-    splitline = ""
-    for data in block:
-        splitline = data.split("\n\n")
-    return splitline
-
-# Supprimme les cases vides
-def cleanSplitLine(splitLine):
-    for case in splitLine:
-        if case != '':
-            splitline2.append(case)
-    return splitline2
-
-# Trouve un element dans une ligne
-def findElement(regex, splitList, tab):
-    for line in splitList:
-        element = re.findall(regex, line)
-        tab.append(element)
-    return tab
-
-#Trouve un élément dans une ligne: si l'élément n'est pas trouvé, récupère la ligne entière
-def findElementLine(regex, modulo, lineNumber, splitList, tab):
-    count = 0
-    for line in splitList:
-        element = re.findall(regex, line)
-        if not element:
-            if count%modulo == lineNumber:
-                tab.append(splitList[count])
-        else:
-            tab.append(element[0])
-        count += 1
-    return tab
-
-def cleanWhiteSpace(tab):
-    tab = filter(None, tab)
-    length = len(tab)
-    for i in range(length):
-        tab[i] = filter(None, tab[i])
-    return tab
 
 #####fonction qui permet de connaitre le sexe
 def gender():
     #On defini le prenom via une RegEx qui prend le premier mot du CV
-    defPrenom = re.findall('\A[a-zA-Z{Ë, Ï, Ö, Œ, ï, ö, é,œ,â, ë}]+ ',txt)
+    defPrenom = re.findall('\A[a-zA-Z{Ë, Ï, Ö, Œ, ï, ö, é,œ,â, ë, ç, ô}]+ ',txt)
     #On supprime l'espace
     for suppEsp in defPrenom:
         prenom = suppEsp.strip()
     #on defini le sexe a partir du prenom
     sexe = Genderize().get1(prenom)
     return sexe['gender']
-
 
 
 #Ouverture du fichier où on stock la variable en mode lecture
@@ -169,6 +120,7 @@ b = True
 
 #telecharge les cv du serveur
 while(b):
+
     try:
         url = "https://pixis.co/projetcv/A"+str(i)+".pdf"
         writer = PdfFileWriter()
@@ -183,8 +135,98 @@ while(b):
             writer.write(outputStream)
             outputStream.close()
 
-        i += 1
+        print("------ cv " + str(i) + "------")
+        txt = convert('pdfminer/samples/cv' + str(i) + '.pdf')
+        # met en miniscule
+        # txt = txt.lower()
+        # print(txt)
+        file = open("cv.txt", "w")
+        file.write(txt)
 
+        # file.close()
+
+        # Reouverture du fichier pour la recherche
+        file  = open("cv.txt", "r")
+
+        print("GENDER:")
+        #gender = gender()
+        print(gender())
+
+        skills, formations = extract_from_txt.findBlocks(file)
+
+        splitFormation1 = extract_from_txt.splitLine(formations)
+        raw = extract_from_txt.cleanSplitLine(splitFormation1)
+        diplomes = extract_from_txt.extractFormationDiplomes(raw)
+        domaines = extract_from_txt.extractFormationDomaines(raw)
+        ecoles = extract_from_txt.extractFormationEcoles(raw)
+
+        file = open('cv.txt', 'r')
+        experience = extract_from_txt.findBlock('EXPÉRIENCE(?s)(.*)[^a-zA-Z]FORMATION', file)
+        splitExperience1 = extract_from_txt.splitLine2(experience)
+        splitExperience2 = extract_from_txt.cleanSplitLine(splitExperience1)
+        listExperienceTitle = extract_from_txt.extractExperienceTitle(splitExperience2)
+        splitExperience4 = extract_from_txt.extractExperiencePlaceBrut(splitExperience2)
+        extract_from_txt.splitLineEmp(splitExperience4)
+        splitLineExpPlace, splitLineExpEmp = extract_from_txt.extractExperienceEmployer(splitExperience4)
+        splitExperienceDateBrut = extract_from_txt.extractExperienceDateBrut(splitExperience2)
+        splitExperienceDateDebut, splitExperienceDateDuree = extract_from_txt.extractExperienceDateDebutDuree(splitExperienceDateBrut)
+
+
+        print ("diplome"+str(i)+"",diplomes)
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+
+        print ("domaine"+str(i)+"",domaines)
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+
+        print ("ecole"+str(i)+"",ecoles)
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+
+        print("experience"+str(i)+"",listExperienceTitle)
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+
+        print("lieu"+str(i)+"",splitLineExpPlace)
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+
+        print("entreprise"+str(i)+"",splitLineExpEmp)
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+
+        print("date debut"+str(i)+"",splitExperienceDateDebut)
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+
+        print("duree"+str(i)+"",splitExperienceDateDuree)
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+        print("-----------------------")
+
+        print("competence"+str(i)+"",skills)
+
+        i += 1
 
     except urllib2.HTTPError as err:
         if err.code == 404:
@@ -200,107 +242,6 @@ f = open('output_variable.txt', 'w')
 f.write(str(i))
 f.close()
 
-
-
-
-#print("------ cv " + str(i) + "------")
-txt = convert('pdfminer/samples/Imene-Meghoufel.pdf')
-# met en miniscule
-# txt = txt.lower()
-# print(txt)
-file = open("cv.txt", "w")
-file.write(txt)
-
-# file.close()
-
-# Reouverture du fichier pour la recherche
-file = open("cv.txt", "r")
-
-print("GENDER:")
-# gender = gender()
-print(gender())
-
-# Bloc EXPÉRIENCE
-postesList = []
-
-print('experience')
-
-# experience = findBlock('EXPÉRIENCE(?s)(.*)[^a-zA-Z]FORMATION', file)
-# splitExperience1 = splitLine(experience)
-# splitExperience2 = cleanSplitLine(splitExperience1)
-# postes = findElement('', splitExperience2, postesList)
-
-# Bloc FORMATION
-formationsList = []
-
-print('BLOC FORMATION')
-
-formation = findBlock('FORMATION(?s)(.*)[^a-zA-Z]COMPÉTENCE', file)
-splitFormation1 = splitLine(formation)
-splitFormation2 = cleanSplitLine(splitFormation1)
-
-# DIPLOMES
-diplomes_list = []
-diplomes = findElementLine('.*(?= en )', 3, 0, splitFormation2, formationsList)
-diplomes = cleanWhiteSpace(diplomes)
-for element in diplomes:
-    strToList = element.lower().split('\n')
-    diplomes_list.append(strToList)
-# print('diplomes: ', diplomes_list)
-diplomes_list = correction(diplomes_list)
-formationsList = []
-
-# DOMAINES
-domaines_list = []
-domaines = findElement('(?<= en ).*', splitFormation2, formationsList)
-domaines = cleanWhiteSpace(domaines)
-for element in domaines:
-    # on convertis la liste en str pour pouvoir mettre en minuscule
-    listToStr = ','.join(element)
-    # puis on remet dans une liste
-    strToList = listToStr.lower().split('\n')
-    domaines_list.append(strToList)
-# print('domaines: ', domaines_list)
-domaines_list = correction(domaines_list)
-formationsList = []
-
-# ECOLES
-ecoles_list = []
-months = "janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre"
-ecoles = findElementLine('(?![' + months + ' \d]).*(?= -)', 3, 1, splitFormation2, formationsList)
-ecoles = cleanWhiteSpace(ecoles)
-for element in ecoles:
-    strToList = element.lower()
-    ecoles_list.append(strToList)
-print('ecole: ', ecoles_list)
-formationsList = []
-
-# LIEUX (no need atm)
-# lieux = findElement('(?<= - ).*', splitFormation2, formationsList)
-# lieux = cleanWhiteSpace(lieux)
-# print('lieux: ', lieux)
-# formationsList = []
-
-# on effectue la recherche du block
-# experience = findBlock('expÉrience(?s)(.*)[^a-zA-Z]formation', file)
-# print("exp", experience)
-
-# splitline = ""
-# splitline2 = []
-
-# suppression des cases vides
-# for case in splitline:
-#    if case != '':
-#        splitline2.append(case)
-
-# postes = []
-# for line in splitline2:
-#    poste = re.findall('.+?(?=at )', line)
-#    print(poste)
-#    postes.append(poste)
-
-# for element in postes:
-#    print(element)
 
 
 
