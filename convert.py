@@ -96,6 +96,7 @@ def correction(x):
 
 #####fonction qui permet de connaitre le sexe
 def gender():
+    gende=[]
     #On defini le prenom via une RegEx qui prend le premier mot du CV
     defPrenom = re.findall('\A[a-zA-Z{Ë, Ï, Ö, Œ, ï, ö, é,œ,â, ë, ç, ô}]+ ',txt)
     #On supprime l'espace
@@ -103,7 +104,9 @@ def gender():
         prenom = suppEsp.strip()
     #on defini le sexe a partir du prenom
     sexe = Genderize().get1(prenom)
-    return sexe['gender']
+    gende.append(sexe['gender'])
+
+    return gende
 
 
 #Ouverture du fichier où on stock la variable en mode lecture
@@ -149,8 +152,8 @@ while(b):
         file  = open("cv.txt", "r")
 
         print("GENDER:")
-        #gender = gender()
-        print(gender())
+        gende = gender()
+        print(gende)
 
         skills, formations = extract_from_txt.findBlocks(file)
 
