@@ -149,12 +149,20 @@ def findBlocks(file):
         if (compInfos or comp):
             if (competences != ""):
 
+                # On vérifie si le bloc contient le nom d'un autre bloc
+                blockName = re.findall(
+                    'LIENS|PUBLICATIONS|SERVICE MILITAIRE|DISTINCTIONS|CERTIFICATS|GROUPES|BREVETS',
+                    competences)
+
+                if (len(blockName) > 0):
+                    # Suppression des blocs indesirables
+                    competences = re.sub(blockName[0] + '(?s).*', '', competences)
+
                 # On supprime tout ce qui est entre parenthèses (duree de formation...)
                 cleanSkills = re.sub(r'\([^)]*\)', '', competences)
 
                 # On récupère les compétences qui sont entre les virgules
                 skills = cleanSkills.split(",")
-
                 skillsNewList = []
                 # Supprime les '\n' de la derniere case
                 for skill in skills:
@@ -163,21 +171,9 @@ def findBlocks(file):
                     skillStripped = cleanSkill.strip()
                     skillsNewList.append(skillStripped)
                 skills = skillsNewList
-
-                # On vérifie si la dernière case contient le nom d'un bloc
-                blockName = re.findall('LIENS|PUBLICATIONS|SERVICE MILITAIRE|DISTINCTIONS|CERTIFICATS|GROUPES|BREVETS',
-                                       skills[-1])
-
-                # Récupère le premier mot de la dernière case de skills
-                firstWord = re.findall('\A[a-zA-Z]+', skills[-1])
-
-                # si le premier mot est en majuscule
-                if (isLowerCase(firstWord) == False):
-                    firstWord = firstWord[0].lower()
-                    skills[-1] = firstWord
-                else:
-                    skills[-1] = firstWord[0]
-    return skillsNewList, formations
+        else:
+            skills = ["NA"]
+    return skills, formations
 
 
 ################  FONCTIONS POUR LE BLOC EXPERIENCE (SAFOUEN)  #######################
