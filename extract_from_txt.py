@@ -26,7 +26,7 @@ def cleanSplitLine(splitLine):
 
 #################   FONCTIONS POUR LE BLOC FORMATION (HECTOR)  #######################
 
-# Trouve un element dans une ligne (hector)
+# Trouve un element (hector)
 def findElement(regex, splitList, tab):
     for line in splitList:
         element = re.findall(regex, line)
@@ -54,6 +54,8 @@ def extractFormationDomaines(splitline):
     listFormationDomaines = []
     for i in range(0, len(splitline), 3):
         element = re.findall('(?<= en ).*', splitline[i])
+        if not element:
+            element = 'NA'
         listFormationDomaines.append(''.join(element))
     return listFormationDomaines
 
@@ -62,6 +64,8 @@ def extractFormationDomaines(splitline):
 def extractFormationEcoles(splitline):
     listFormationEcole = []
     for i in range(1, len(splitline), 3):
+        if not splitline[i]:
+            splitline[i] = 'NA'
         listFormationEcole.append(splitline[i])
     return listFormationEcole
 
