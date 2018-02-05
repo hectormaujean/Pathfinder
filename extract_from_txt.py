@@ -259,10 +259,10 @@ def extractExperienceDateDebutDuree(splitline):
                     (int(re.findall(r"[0-9]{4}", case)[0])) * 12) - monthToNumberOne(case)) + 1)
         elif re.findall(r"([0-9]{4})", case):
             listDateDebut.append(re.findall(r"([0-9]{4})$", case)[0])
-            listDuree.append("none")
+            listDuree.append("NA")
         else:
-            listDateDebut.append("none")
-            listDuree.append("none")
+            listDateDebut.append("NA")
+            listDuree.append("NA")
     return listDateDebut, listDuree
 
 
@@ -278,23 +278,23 @@ def extractExperienceEmployer(splitline):
     for casetab in splitline:
         if (len(casetab) == 2):
             if (casetab[0] == ""):
-                listEmployer.append("non")
+                listEmployer.append("NA")
             else:
                 listEmployer.append(casetab[0])
 
             if (casetab[1] == ""):
-                listPlaceExp.append("non")
+                listPlaceExp.append("NA")
             else:
                 listPlaceExp.append(casetab[1])
         elif (len(casetab) == 1):
             if (re.findall(r"(, )", casetab[0])) or (re.findall(r"([0-9])", casetab[0])):
                 if (re.findall(r"(, )", casetab[0])):
                     listPlaceExp.append(casetab[0])
-                    listEmployer.append("non")
+                    listEmployer.append("NA")
                 if (re.findall(r"([0-9])", casetab[0])):
                     listPlaceExp.append(casetab[0])
-                    listEmployer.append("non")
+                    listEmployer.append("NA")
             else:
                 listEmployer.append(casetab[0])
-                listPlaceExp.append("non")
+                listPlaceExp.append("NA")
     return listPlaceExp, listEmployer
