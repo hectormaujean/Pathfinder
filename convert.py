@@ -18,7 +18,9 @@ from StringIO import StringIO
 import extract_from_txt
 import csv
 import os
-import numpy
+import numpy as np
+import pandas as pd
+
 
 # *********************************** Convertit un fichier pdf en txt ************************
 def convert(path):
@@ -110,7 +112,7 @@ def gender():
 def WriteDictToCSV(csv_file, csv_columns, Liste_CV):
     try:
         with open(csv_file, 'a') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=csv_columns, restval='')
+            writer = csv.DictWriter(csvfile, fieldnames=csv_columns, restval='NA')
             if i == 1: #on ecrit le nom des colonnes que 1x
                 writer.writeheader()
             for data in Liste_CV:
@@ -135,7 +137,7 @@ csv_columns = ['ID','GENDER' , 'Poste 1', 'Entreprise 1', 'Duree 1', 'Poste 2', 
                'Skill 1', 'Skill 2', 'Skill 3', 'Skill 4', 'Skill 5', 'Skill 6',
                'Skill 7', 'Skill 8',
                'Skill 9', 'Skill 10', 'Skill 11', 'Skill 12', 'Skill 13', 'Skill 14', 'Skill 15', 'Skill 16', 'Skill 17', 'Skill 18', 'Skill 19', 'Skill 20', 'Skill 21', 'Skill 22',
-               'Skill 23', 'Skill 24', 'Skill 25']
+               'Skill 23', 'Skill 24', 'Skill 25','Skill 26', 'Skill 27', 'Skill 28','Skill 29', 'Skill 30', 'Skill 31','Skill 32', 'Skill 33', 'Skill 34','Skill 35', 'Skill 36', 'Skill 37']
 
 currentPath = os.getcwd()
 csv_file = currentPath + "/resultat.csv"
@@ -154,7 +156,7 @@ def merge_x_dicts(a,b,c,d,e):
     return o
 
 
-# *********************************** Traitement des données ************************
+
 
 #Ouverture du fichier où on stock la variable en mode lecture
 path = open('output_variable.txt','rb')
@@ -172,7 +174,7 @@ b = True
 while(b):
 
     try:
-
+        
         url = "https://pixis.co/projetcv/A"+str(i)+".pdf"
         writer = PdfFileWriter()
         remoteFile = urllib2.urlopen(Request(url)).read()
@@ -185,9 +187,11 @@ while(b):
             outputStream = open("pdfminer/samples/CV"+str(i)+".pdf","wb")
             writer.write(outputStream)
             outputStream.close()
-        
+     
         print("------ cv " + str(i) + "------")
         txt = convert('pdfminer/samples/CV'+str(i)+'.pdf')
+
+        
         # ouverture du fichier en mode ecriture
         file = open("cv.txt", "w")
         file.write(txt)
@@ -309,7 +313,7 @@ while(b):
 
         WriteDictToCSV(csv_file, csv_columns, Liste_CV)
 
-        os.remove('pdfminer/samples/CV'+str(i)+'.pdf')
+        #os.remove('pdfminer/samples/CV"+str(i)+".pdf')
         i += 1
 
     except urllib2.HTTPError as err:
@@ -321,7 +325,7 @@ while(b):
 
 print('i',i)
 #Ouverture du fichier où on stock la variable en mode écriture
-f = open('output_variable.txt', 'w')
+f = open('output_variable1.txt', 'w')
 #on ecrit la nouvelle variable en str
 f.write(str(i))
 f.close()
