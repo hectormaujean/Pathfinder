@@ -1,87 +1,48 @@
-Imene Meghoufel
+éAleksandra Neupokoeva
 
-Paris 19e (75) - Email me on Indeed: indeed.com/r/Imene-Meghoufel/59328653a5d2b855
+Data Scientist
+
+Espoo, FI - Email me on Indeed: indeed.com/r/Aleksandra-Neupokoeva/04e9facd42d9aebe
+
+I am a recent graduate, Master of Science in Machine Learning and Data Mining, with a former experience in
+industrial data mining. I am passionate about data exploration and bringing up new data insights.
 
 Disposé(e) à déménager n'importe où
 
 EXPÉRIENCE
 
-Développeur Data scientist
+Data Mining intern
 
-BEREXIA conseil  -  La Défense (92) -
+Siemens Industrial Turbomachinery AB -
 
-mars 2017 - septembre 2017
+mars 2016 - août 2016
 
-Implémentation  d'un  outil  informatique  qui  permet  l'extraction  automatique  des  connaissances  des  pièces
-jointes via un service de reconnaissance de type doc hébergé sur Amazon
-Outils:Python,  Java,  Linux,  Windows,  GPU,  Deep  Learning,  Faster-RCNN  machine  learning,  Réseaux  de
-neurones, LabelImg, ImageMagick Reconnaissance des formes, Multiprocessing, Caffe ElementTree, LSTM,
-Tesseract, Cloud "AWS"
-
-STAGE autonome, Business Analyste
-
-BEREXIA Conseil  -  La Défense (92) -
-
-juin 2016 - septembre 2016
-
-• Déploiement d'une application dédiée au domaine de l'assurance
-• Recueil du besoin client et Définition des spécifications fonctionnelles détaillées
-• Participation aux réunions de suivi et de validation des spécifications fonctionnelles
-• Détailler les cas de test et valoriser les résultats attendus et Rédaction de compte rendu
-• Remonter les anomalies et valider leur correction en collaboration avec l'équipe de développement
-• Réceptionnez et traitez les incidents détectés en production par les utilisateurs
-Méthode Agile SQL
-
-STAGE autonome, Ingénieur en Informatique
-
-École Nationale des Sciences -
-
-juin 2014 - juin 2014
-
-de l'informatique (ENSI),
-Alger, Algérie
+Responsible for the data mining part in the operational data analytics project:
+• Analyzed big datasets of field experience data.
+• Worked with semi-structured and structured data.
+• Performed quantitative analysis of data quality.
+• Conducted several exploratory schemes and compared its results.
+• Developed the final model for prediction of operation influence on the equipment
+lifetime.
+• Reported and explained the work to other departments.
+• Worked on the way of integration of the results into survival models.
 
 FORMATION
 
-Anglais
+Master of Science en Computer Science: Machine Learning and Data Mining
 
-Institut Privé CAMPUS LANGUES
+Aalto University  -  Espoo, FI
 
-2017 - 2018
+2014 - décembre 2016
 
-MASTER
+Specialist en Mechanical Engineering
 
-Université PARIS DESCARTES  -  Paris (75)
+National Research Nuclear University MEPhI  -  Moscow, RU
 
-2015 - 2017
-
-MASTER en Génie Informatique
-
-Faculté de technologie, Université DJILLALI LIA
-
-2013 - 2015
-
-LICENCE en Génie Informatique
-
-Faculté de technologie, Université DJILLALI LIA
-
-2012 - 2013
+septembre 2009 - juin 2014
 
 COMPÉTENCE
 
-INTELLIGENCE ARTIFICIELLE (Moins d'un an), AJAX (Moins d'un an), C (Moins d'un an), C++ (Moins d'un
-an), CSS (Moins d'un an)
-
-LIENS
-
-http://linkedin.com/in/imene-meghoufel
-
-INFORMATIONS COMPLÉMENTAIRES
-
-Langages de programmation Python, C/C++, JavaScript, HTML/CSS, PHP, SQL, AJAX
-Tools R, Knime, Jupyter, notebook, Matlab, LabView, Canopy, Git/GitHub, Assembleur: […]
-ML/DL libraries and frameworks scikit-learn, matplotlib, Text-Mining, SciPy, Numpy, pandas, Programmation
-Agent JADE
-Interêt Sport, Intelligence Artificielle et Apprentissage automatique
+Computer Skills Matlab/Octave, R, Python (pandas, numpy), SQL, Tableau, Latex.
 
 
