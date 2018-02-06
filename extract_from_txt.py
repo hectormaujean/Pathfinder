@@ -8,6 +8,20 @@ import xlsxwriter
 import re
 from datetime import datetime
 
+def replace_accent(str):
+    """ supprime les accents du texte source """
+    accents = {'a': ['à', 'ã', 'á', 'â'],
+                'e': ['é', 'è', 'ê', 'ë'],
+                'i': ['î', 'ï'],
+                'u': ['ù', 'ü', 'û'],
+                'o': ['ô', 'ö'],
+                ' ': [ '•','.','_','&' , '"' , '!' , '/' ,' \ ' , '%', ';', ':', '?','=' , '*']
+                }
+    for (char, accented_chars) in accents.iteritems():
+        for accented_char in accented_chars:
+            str = str.replace(accented_char, char)
+    return str
+
 
 # Split le bloc par ligne (commun)
 def splitLine(block):
@@ -41,11 +55,11 @@ def extractFormationDiplomes(splitline):
         element = re.findall('.*(?= en )', splitline[i])
         if not element:
             element = splitline[i]
-            element = element.lower().split('\n')
+            element = element.split('\n')
         for i in range(0, len(element), 1):
             if element[i] == '':
                 element = filter(None, element)
-        listDiplome.append(''.join(element[0].lower()))
+        listDiplome.append(replace_accent(''.join(element[0].lower())))
     return listDiplome
 
 
@@ -56,7 +70,7 @@ def extractFormationDomaines(splitline):
         element = re.findall('(?<= en ).*', splitline[i])
         if not element:
             element = 'NA'
-        listFormationDomaines.append(''.join(element[0].lower()))
+        listFormationDomaines.append(replace_accent(''.join(element[0].lower())))
     return listFormationDomaines
 
 
@@ -66,7 +80,7 @@ def extractFormationEcoles(splitline):
     for i in range(1, len(splitline), 3):
         if not splitline[i]:
             splitline[i] = 'NA'
-        listFormationEcole.append(splitline[i].lower())
+        listFormationEcole.append(replace_accent(splitline[i].lower()))
     return listFormationEcole
 
 
@@ -169,7 +183,7 @@ def findBlocks(file):
                     cleanSkill = re.sub('\n', '', skill)
                     # Supprime les espaces blancs avant et après la chaine
                     skillStripped = cleanSkill.strip()
-                    skillsNewList.append(skillStripped.lower())
+                    skillsNewList.append(replace_accent(skillStripped.lower()))
                 skills = skillsNewList
         else:
             skills = ["NA"]
@@ -223,14 +237,14 @@ def monthToNumberTwo(string):
 def extractExperienceTitle(splitline):
     listExperienceTitle = []
     for i in range(0, len(splitline), 4):
-        listExperienceTitle.append(splitline[i].lower())
+        listExperienceTitle.append(replace_accent(splitline[i].lower()))
     return listExperienceTitle
 
 
 def extractExperiencePlaceBrut(splitline):
     list = []
     for i in range(1, len(splitline), 4):
-        list.append(splitline[i].lower())
+        list.append(replace_accent(splitline[i].lower()))
     return list
 
 
@@ -280,21 +294,21 @@ def extractExperienceEmployer(splitline):
             if (casetab[0] == ""):
                 listEmployer.append("NA")
             else:
-                listEmployer.append(casetab[0].lower())
+                listEmployer.append(replace_accent(casetab[0].lower()))
 
             if (casetab[1] == ""):
                 listPlaceExp.append("NA")
             else:
-                listPlaceExp.append(casetab[1].lower())
+                listPlaceExp.append(replace_accent(casetab[1].lower()))
         elif (len(casetab) == 1):
             if (re.findall(r"(, )", casetab[0])) or (re.findall(r"([0-9])", casetab[0])):
                 if (re.findall(r"(, )", casetab[0])):
-                    listPlaceExp.append(casetab[0].lower())
+                    listPlaceExp.append(replace_accent(casetab[0].lower()))
                     listEmployer.append("NA")
                 if (re.findall(r"([0-9])", casetab[0])):
-                    listPlaceExp.append(casetab[0].lower())
+                    listPlaceExp.append(replace_accent(casetab[0].lower()))
                     listEmployer.append("NA")
             else:
-                listEmployer.append(casetab[0].lower())
+                listEmployer.append(replace_accent(casetab[0].lower()))
                 listPlaceExp.append("NA")
     return listPlaceExp, listEmployer
