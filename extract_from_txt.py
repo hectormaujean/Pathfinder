@@ -246,7 +246,7 @@ def extractExperienceDateDebutDuree(splitline):
     listDuree = []
     for case in splitline:
         if re.findall(
-                r"(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)?[ ][0-9]{4}[ ][-][ ](actuellement)",
+                r"(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)?[ ]?[0-9]{4}[ ][-][ ](actuellement)[ ]?",
                 case):
             listDateDebut.append(re.findall(r"[0-9]{4}", case)[0])
             listDuree.append(((datetime.now().year * 12) + datetime.now().month) - (
@@ -258,7 +258,7 @@ def extractExperienceDateDebutDuree(splitline):
             listDuree.append(((((int(re.findall(r"[0-9]{4}", case)[1])) * 12) + monthToNumberTwo(case)) - (
                     (int(re.findall(r"[0-9]{4}", case)[0])) * 12) - monthToNumberOne(case)) + 1)
         elif re.findall(r"([0-9]{4})", case):
-            listDateDebut.append(re.findall(r"([0-9]{4})$", case)[0])
+            listDateDebut.append(re.findall(r"([0-9]{4})", case)[0])
             listDuree.append("NA")
         else:
             listDateDebut.append("NA")
