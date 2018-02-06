@@ -45,7 +45,7 @@ def extractFormationDiplomes(splitline):
         for i in range(0, len(element), 1):
             if element[i] == '':
                 element = filter(None, element)
-        listDiplome.append(''.join(element))
+        listDiplome.append(''.join(element[0].lower()))
     return listDiplome
 
 
@@ -56,7 +56,7 @@ def extractFormationDomaines(splitline):
         element = re.findall('(?<= en ).*', splitline[i])
         if not element:
             element = 'NA'
-        listFormationDomaines.append(''.join(element))
+        listFormationDomaines.append(''.join(element[0].lower()))
     return listFormationDomaines
 
 
@@ -66,7 +66,7 @@ def extractFormationEcoles(splitline):
     for i in range(1, len(splitline), 3):
         if not splitline[i]:
             splitline[i] = 'NA'
-        listFormationEcole.append(splitline[i])
+        listFormationEcole.append(splitline[i].lower())
     return listFormationEcole
 
 
@@ -169,7 +169,7 @@ def findBlocks(file):
                     cleanSkill = re.sub('\n', '', skill)
                     # Supprime les espaces blancs avant et après la chaine
                     skillStripped = cleanSkill.strip()
-                    skillsNewList.append(skillStripped)
+                    skillsNewList.append(skillStripped.lower())
                 skills = skillsNewList
         else:
             skills = ["NA"]
@@ -223,21 +223,21 @@ def monthToNumberTwo(string):
 def extractExperienceTitle(splitline):
     listExperienceTitle = []
     for i in range(0, len(splitline), 4):
-        listExperienceTitle.append(splitline[i])
+        listExperienceTitle.append(splitline[i].lower())
     return listExperienceTitle
 
 
 def extractExperiencePlaceBrut(splitline):
     list = []
     for i in range(1, len(splitline), 4):
-        list.append(splitline[i])
+        list.append(splitline[i].lower())
     return list
 
 
 def extractExperienceDateBrut(splitline):
     list = []
     for i in range(2, len(splitline), 4):
-        list.append(splitline[i])
+        list.append(splitline[i].lower())
     return list
 
 
@@ -280,21 +280,21 @@ def extractExperienceEmployer(splitline):
             if (casetab[0] == ""):
                 listEmployer.append("NA")
             else:
-                listEmployer.append(casetab[0])
+                listEmployer.append(casetab[0].lower())
 
             if (casetab[1] == ""):
                 listPlaceExp.append("NA")
             else:
-                listPlaceExp.append(casetab[1])
+                listPlaceExp.append(casetab[1].lower())
         elif (len(casetab) == 1):
             if (re.findall(r"(, )", casetab[0])) or (re.findall(r"([0-9])", casetab[0])):
                 if (re.findall(r"(, )", casetab[0])):
-                    listPlaceExp.append(casetab[0])
+                    listPlaceExp.append(casetab[0].lower())
                     listEmployer.append("NA")
                 if (re.findall(r"([0-9])", casetab[0])):
-                    listPlaceExp.append(casetab[0])
+                    listPlaceExp.append(casetab[0].lower())
                     listEmployer.append("NA")
             else:
-                listEmployer.append(casetab[0])
+                listEmployer.append(casetab[0].lower())
                 listPlaceExp.append("NA")
     return listPlaceExp, listEmployer

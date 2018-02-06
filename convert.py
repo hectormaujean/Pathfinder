@@ -99,6 +99,7 @@ def correction(x):
 # *********************************** fonction qui permet de connaitre le sexe ************************
 def gender():
     gende=[]
+    prenom = ""
     #On defini le prenom via une RegEx qui prend le premier mot du CV
     defPrenom = re.findall('\A[a-zA-Z{Ë, Ï, Ö, Œ, ï, ö, é,œ,â, ë, ç, ô, -}]+ ',txt)
     #On supprime l'espace
