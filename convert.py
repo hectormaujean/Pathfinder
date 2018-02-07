@@ -16,6 +16,7 @@ from urllib2 import Request
 from pyPdf import PdfFileWriter, PdfFileReader
 from StringIO import StringIO
 import extract_from_txt
+import calcul_stat
 import csv
 import os
 import numpy as np
