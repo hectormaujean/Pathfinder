@@ -69,7 +69,7 @@ def extractFormationDomaines(splitline):
     for i in range(0, len(splitline), 3):
         element = re.findall('(?<= en ).*', splitline[i])
         if not element:
-            element = 'NA'
+            element = ['NA']
         listFormationDomaines.append(replace_accent(''.join(element[0].lower())))
     return listFormationDomaines
 

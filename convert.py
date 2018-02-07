@@ -19,8 +19,7 @@ import extract_from_txt
 import calcul_stat
 import csv
 import os
-import numpy as np
-import pandas as pd
+
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -109,7 +108,6 @@ def gender():
     #on defini le sexe a partir du prenom
     sexe = Genderize().get1(prenom)
     gende.append(sexe['gender'])
-
     return gende
 
   # ***********************************Functionn Writing  to CSV************************
@@ -149,6 +147,7 @@ csv_file = currentPath + "/resultat.csv"
 
 
 # *********************************** fonction pour rassembler x dictionnaires  ( a , b , c , d , e ) ************************
+
 def merge_x_dicts(a,b,c,d,e):
     l = a.copy()   # start with l's keys and values
     l.update(b) # modifies l with b's keys and values
@@ -160,6 +159,7 @@ def merge_x_dicts(a,b,c,d,e):
     o.update(e)
     return o
 
+# *********************************** fonction pour supprimer les accents ************************
 
 
 
@@ -179,23 +179,23 @@ b = True
 while(b):
 
     try:
-        
-        url = "https://pixis.co/projetcv/A"+str(i)+".pdf"
+
+        url = "https://pixis.co/projetcv/CV"+str(i)+".pdf"
         writer = PdfFileWriter()
         remoteFile = urllib2.urlopen(Request(url)).read()
         memoryFile = StringIO(remoteFile)
         pdfFile = PdfFileReader(memoryFile)
-
+        
         for pageNum in xrange(pdfFile.getNumPages()):
             currentPage = pdfFile.getPage(pageNum)
             writer.addPage(currentPage)
             outputStream = open("pdfminer/samples/CV"+str(i)+".pdf","wb")
             writer.write(outputStream)
             outputStream.close()
-     
+
         print("------ cv " + str(i) + "------")
         txt = convert('pdfminer/samples/CV'+str(i)+'.pdf')
-
+        #txt = supprime_accent(txt1)
         
         # ouverture du fichier en mode ecriture
         file = open("cv.txt", "w")
@@ -205,6 +205,7 @@ while(b):
 
         # ouverture du fichier pour la recherche en mode lecture
         file = open("cv.txt", "r")
+
 
         # Appels des fonctions regex
         skills, formations = extract_from_txt.findBlocks(file)
@@ -225,10 +226,10 @@ while(b):
         extract_from_txt.splitLineEmp(splitExperience4)
         splitLineExpPlace, splitLineExpEmp = extract_from_txt.extractExperienceEmployer(splitExperience4)
         splitExperienceDateBrut = extract_from_txt.extractExperienceDateBrut(splitExperience2)
-        splitExperienceDateDebut, splitExperienceDateDuree = extract_from_txt.extractExperienceDateDebutDuree(
-            splitExperienceDateBrut)
+        splitExperienceDateDebut, splitExperienceDateDuree = extract_from_txt.extractExperienceDateDebutDuree(splitExperienceDateBrut)
 
-        print ("gender", gender())
+
+        #print ("gender", gender())
         print ("diplome:"+str(i)+"",diplomes)
         print ("domaine:"+str(i)+"",domaines)
         print ("ecole:"+str(i)+"",ecoles)
@@ -313,13 +314,15 @@ while(b):
         print("formation",my_dict_Formation)
         print("skills", my_dict_Skills)
         my_dict = merge_x_dicts(my_dict_id, my_dict_gender, my_dict_Exp, my_dict_Formation, my_dict_Skills)
+        #my_dict = merge_x_dicts(my_dict_id, my_dict_Exp, my_dict_Formation, my_dict_Skills)
         Liste_CV.append(my_dict)
         print(Liste_CV)
 
         WriteDictToCSV(csv_file, csv_columns, Liste_CV)
 
-        #os.remove('pdfminer/samples/CV"+str(i)+".pdf')
+
         i += 1
+        #os.remove('pdfminer/samples/CV"+str(i)+".pdf')
 
     except urllib2.HTTPError as err:
         if err.code == 404:
@@ -330,7 +333,7 @@ while(b):
 
 print('i',i)
 #Ouverture du fichier où on stock la variable en mode écriture
-f = open('output_variable1.txt', 'w')
+f = open('output_variable.txt', 'w')
 #on ecrit la nouvelle variable en str
 f.write(str(i))
 f.close()
